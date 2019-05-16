@@ -8,7 +8,7 @@ public class CharacterSelector {
         powerLevel = pl;
     }
 
-    public LifeForm getComparableLifeForm(double pl) {
-
-    }
+//    public LifeForm getComparableLifeForm(double pl) {
+//
+//    }
 }

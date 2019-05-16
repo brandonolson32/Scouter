@@ -9,4 +9,8 @@ public class LifeForm {
         this.name = name;
         this.powerLevel = powerLevel;
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -3,9 +3,9 @@ package com.example.scouter.entity;
 public class LifeForm {
 
     private String name;
-    private int powerLevel;
+    private double powerLevel;
 
-    public LifeForm (String name, int powerLevel) {
+    public LifeForm (String name, double powerLevel) {
         this.name = name;
         this.powerLevel = powerLevel;
     }

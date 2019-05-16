@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.scouter.R;
 
-public class MainActivity extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

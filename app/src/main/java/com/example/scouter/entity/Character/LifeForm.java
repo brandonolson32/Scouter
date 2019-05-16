@@ -1,4 +1,4 @@
-package com.example.scouter.entity;
+package com.example.scouter.entity.Character;
 
 public class LifeForm {
 

@@ -1,5 +1,7 @@
 package com.example.scouter.entity;
 
+import com.example.scouter.entity.Character.LifeForm;
+
 public class User extends LifeForm {
     private int squat;
     private int bench;

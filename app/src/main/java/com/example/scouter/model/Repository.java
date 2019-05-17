@@ -63,4 +63,20 @@ public class Repository {
     public String getUserName() {
         return user.getName();
     }
+
+    /**
+     * Sets the User's name to the input name
+     * @param name the name to assign to the User
+     */
+    public void setUserName(String name) {
+        user.setName(name);
+    }
+
+    /**
+     * Sets the User's ID
+     * @param id The id of the user
+     */
+    public void setId(int id) {
+        user.setId(id);
+    }
 }

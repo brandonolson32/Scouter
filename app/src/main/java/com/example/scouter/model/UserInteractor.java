@@ -67,4 +67,22 @@ public class UserInteractor extends Interactor {
         repo = getRepo();
         return repo.getUserName();
     }
+
+    /**
+     * Sets the user's ID
+     * @param id The id of the User
+     */
+    public void setId(int id) {
+        repo = getRepo();
+        repo.setId(id);
+    }
+
+    /**
+     * Sets the User's name to the input name
+     * @param name the name to assign to the User
+     */
+    public void setName(String name) {
+        repo = getRepo();
+        repo.setUserName(name);
+    }
 }

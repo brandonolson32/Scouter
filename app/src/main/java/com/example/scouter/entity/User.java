@@ -29,6 +29,12 @@ public class User extends LifeForm {
         this.id = id;
     }
 
+    /**
+     * Sets the name of a User to the input name
+     * @param name the name to set the User's to
+     */
+    public void setName(String name) { this.name = name; }
+
     public int getSquat() {
         return this.squat;
     }

@@ -1,11 +1,13 @@
 package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -72,6 +74,15 @@ public class UserCreation extends AppCompatActivity {
                 Integer.parseInt(deadliftMaxField.getText().toString()));
         System.out.println("User created");
         userViewModel.addUser(user);
+
+        Button computeButton = findViewById(R.id.compute_button);
+
+        computeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
+            }
+        });
     }
 
 //        addPlayer();

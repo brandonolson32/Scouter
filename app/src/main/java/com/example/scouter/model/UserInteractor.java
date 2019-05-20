@@ -35,7 +35,7 @@ public class UserInteractor extends Interactor {
      * Adds another User instance
      * @param user the User to add
      */
-    public void addUser (User user) {
+    public void addUser(User user) {
         repo = getRepo();
         repo.addUser(user);
     }
@@ -44,7 +44,7 @@ public class UserInteractor extends Interactor {
      * Updates the user object
      * @param user the User to update
      */
-    public void updateUser (User user) {
+    public void updateUser(User user) {
         repo = getRepo();
         repo.updateUser(user);
         Log.i("APP", "Interactor: updating user: " + user);

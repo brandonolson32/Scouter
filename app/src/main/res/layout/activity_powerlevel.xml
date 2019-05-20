@@ -3,16 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context="com.example.scouter.views.ScouterDisplay">
 
-        <EditText
-            android:id="@+id/powerLevel"
+        <TextView
+            android:id="@+id/pl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-    </LinearLayout>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"/>
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

@@ -68,6 +68,7 @@ public class Repository {
         int id = Repository.getNextUniqueID();
         user.setId(id);
         lifeForms.add(user);
+        this.user = user;
     }
 
     public void updateUser(User user) {

@@ -1,7 +1,11 @@
 package com.example.scouter.views;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -14,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.example.scouter.R;
+import com.example.scouter.entity.User;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
 /**
@@ -23,23 +28,54 @@ public class UserCreation extends AppCompatActivity {
 
     private EditUserViewModel userViewModel;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
     private EditText nameField;
-
-    private TextView squatMax;
-    private TextView benchMax;
-    private TextView deadliftMax;
+    private EditText squatMaxField;
+    private EditText benchMaxField;
+    private EditText deadliftMaxField;
 
     private int sm;
     private int bm;
     private int dm;
 
-    private Spinner majorSpinner;
-
     private RequestQueue requestQueue;
+
+    private final String baseUrl = "http://10.0.2.2:9080/myapi";
+    private String url;
+
+    @Override
+    /*
+      This function makes everything upon pressing the create button
+      @param savedInstanceState The state of the saved game
+     */
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        nameField = findViewById(R.id.name_field);
+        squatMaxField = findViewById(R.id.squat_max_field);
+        benchMaxField = findViewById(R.id.bench_max_field);
+        deadliftMaxField = findViewById(R.id.deadlift_max_field);
+
+        userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
+
+        requestQueue = Volley.newRequestQueue(this);
+    }
+
+    /**
+     * This function allows things to happen when the create button is pressed
+     * @param view The games current view
+     */
+    public void onCreatePressed(View view) {
+        User user = new User(nameField.getText().toString(),
+                Integer.parseInt(squatMaxField.getText().toString()),
+                Integer.parseInt(benchMaxField.getText().toString()),
+                Integer.parseInt(deadliftMaxField.getText().toString()));
+
+        userViewModel.addUser(user);
+    }
+
+//        addPlayer();
+//    } else {
+//        Log.i("MyActivity", "Pleas make sure you've used all your skills!");
+//    }
 }

@@ -87,31 +87,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deadlift_max_field" />
 
-    <!--<EditText-->
-        <!--android:id="@+id/squat_max_field"-->
-        <!--android:layout_width="121dp"-->
-        <!--android:layout_height="41dp"-->
-        <!--android:hint="Squat max"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:textColor="#FFF"-->
-        <!--android:textColorHint="#FFF" />-->
-
-    <!--<EditText-->
-        <!--android:id="@+id/bench_max_field"-->
-        <!--android:layout_width="121dp"-->
-        <!--android:layout_height="41dp"-->
-        <!--android:hint="Bench max"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:textColor="#FFF"-->
-        <!--android:textColorHint="#FFF" />-->
-
-    <!--<EditText-->
-        <!--android:id="@+id/deadlift_max_field"-->
-        <!--android:layout_width="121dp"-->
-        <!--android:layout_height="41dp"-->
-        <!--android:hint="Deadlift max"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:textColor="#FFF"-->
-        <!--android:textColorHint="#FFF" />-->
-
 </android.support.constraint.ConstraintLayout>

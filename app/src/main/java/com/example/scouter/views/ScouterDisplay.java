@@ -30,6 +30,6 @@ public class ScouterDisplay extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
 
         pl = findViewById(R.id.powerLevel);
-        pl.setText(UserCreation.getUserViewModel().getUser().getPowerLevel());
+//        pl.setText(UserCreation.getUserViewModel().getUser().getPowerLevel());
     }
 }

@@ -1,9 +1,12 @@
 package com.example.scouter.views;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -11,11 +14,9 @@ import com.example.scouter.R;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
 public class ScouterDisplay extends AppCompatActivity {
-    private EditUserViewModel userViewModel;
+    private EditUserViewModel model;
 
-    private EditText pl;
-
-    private RequestQueue requestQueue;
+    private TextView pl;
 
     @Override
     /*
@@ -26,10 +27,9 @@ public class ScouterDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_powerlevel);
 
-        userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
-        requestQueue = Volley.newRequestQueue(this);
+        model = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
-        pl = findViewById(R.id.powerLevel);
-//        pl.setText(UserCreation.getUserViewModel().getUser().getPowerLevel());
+        pl = findViewById(R.id.pl);
+        pl.setText(String.valueOf(model.getPowerLevel()));
     }
 }

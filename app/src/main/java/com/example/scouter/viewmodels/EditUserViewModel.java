@@ -2,6 +2,7 @@ package com.example.scouter.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.MutableLiveData;
 import android.graphics.ColorSpace;
 import android.support.annotation.NonNull;
 
@@ -9,12 +10,14 @@ import com.example.scouter.entity.User;
 import com.example.scouter.model.Model;
 import com.example.scouter.model.UserInteractor;
 
+import java.util.List;
+
 /**
  * Class used to edit the User
  */
 public class EditUserViewModel extends AndroidViewModel {
 
-    private final UserInteractor interactor;
+    private UserInteractor interactor;
 
     /**
      * Constructor for EditUserViewModel - calls constructor of superclass
@@ -39,6 +42,8 @@ public class EditUserViewModel extends AndroidViewModel {
      */
     public void addUser(User user) {
         interactor.addUser(user);
+        System.out.println(user);
+        System.out.println("added user");
     }
 
     /**

@@ -38,6 +38,7 @@ public class UserCreation extends AppCompatActivity {
     private EditText squatMaxField;
     private EditText benchMaxField;
     private EditText deadliftMaxField;
+    private Button computeButton;
 
     private int sm;
     private int bm;
@@ -65,29 +66,21 @@ public class UserCreation extends AppCompatActivity {
         userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
         requestQueue = Volley.newRequestQueue(this);
-    }
 
-    /**
-     * This function allows things to happen when the create button is pressed
-     * @param view The games current view
-     */
-    public void onCreatePressed(View view) {
-        User user = new User(nameField.getText().toString(),
-                Integer.parseInt(squatMaxField.getText().toString()),
-                Integer.parseInt(benchMaxField.getText().toString()),
-                Integer.parseInt(deadliftMaxField.getText().toString()));
-        System.out.println("User created");
-        userViewModel.addUser(user);
-        addUser();
-
-        Button computeButton = findViewById(R.id.compute_button);
-
+        computeButton = findViewById(R.id.compute_button);
         computeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
+                User user = new User(nameField.getText().toString(),
+                        Integer.parseInt(squatMaxField.getText().toString()),
+                        Integer.parseInt(benchMaxField.getText().toString()),
+                        Integer.parseInt(deadliftMaxField.getText().toString()));
+                userViewModel.addUser(user);
+                UserCreation.this.startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
             }
         });
+
+
     }
 
     /**

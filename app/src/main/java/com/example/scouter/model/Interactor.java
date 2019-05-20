@@ -5,13 +5,13 @@ package com.example.scouter.model;
  */
 public class Interactor {
 
-    private final Repository myRepo;
+    private Repository myRepo;
 
     protected Interactor(Repository repo) {
         myRepo = repo;
     }
 
-    protected  Repository getRepo() {
+    protected Repository getRepo() {
         return myRepo;
     }
 }

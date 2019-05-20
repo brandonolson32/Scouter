@@ -26,7 +26,7 @@ import com.example.scouter.viewmodels.EditUserViewModel;
  */
 public class UserCreation extends AppCompatActivity {
 
-    private EditUserViewModel userViewModel;
+    private static EditUserViewModel userViewModel;
 
     private EditText nameField;
     private EditText squatMaxField;
@@ -72,6 +72,10 @@ public class UserCreation extends AppCompatActivity {
                 Integer.parseInt(deadliftMaxField.getText().toString()));
         System.out.println("User created");
         userViewModel.addUser(user);
+    }
+
+    public static EditUserViewModel getUserViewModel() {
+        return userViewModel;
     }
 
 //        addPlayer();

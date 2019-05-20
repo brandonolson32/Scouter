@@ -70,7 +70,7 @@ public class UserCreation extends AppCompatActivity {
                 Integer.parseInt(squatMaxField.getText().toString()),
                 Integer.parseInt(benchMaxField.getText().toString()),
                 Integer.parseInt(deadliftMaxField.getText().toString()));
-
+        System.out.println("User created");
         userViewModel.addUser(user);
     }
 

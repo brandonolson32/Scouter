@@ -69,6 +69,15 @@ public class UserInteractor extends Interactor {
     }
 
     /**
+     * Gets the User's power level
+     * @return int the power level of the user
+     */
+    public int getPowerLevel() {
+        repo = getRepo();
+        return repo.getUserPowerLevel();
+    }
+
+    /**
      * Sets the user's ID
      * @param id The id of the User
      */

@@ -62,6 +62,12 @@ public class EditUserViewModel extends AndroidViewModel {
     public String getName() { return interactor.getName(); }
 
     /**
+     * Gets the User's power level
+     * @return int the User's power level
+     */
+    public int getPowerLevel() { return interactor.getPowerLevel(); }
+
+    /**
      * Sets the User's name
      * @param name the name to assign to the User
      */

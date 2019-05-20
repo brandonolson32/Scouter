@@ -83,19 +83,27 @@ public class Repository {
     }
 
     /**
-     * Sets the User's name to the input name
-     * @param name the name to assign to the User
-     */
-    public void setUserName(String name) {
-        user.setName(name);
-    }
-
-    /**
      * Gets the current User's id
      * @return int the id of the user
      */
     public int getUserId() {
         return user.getId();
+    }
+
+    /**
+     * Gets the User's power level
+     * @return int the power level of the user
+     */
+    public int getUserPowerLevel() {
+        return user.getPowerLevel();
+    }
+
+    /**
+     * Sets the User's name to the input name
+     * @param name the name to assign to the User
+     */
+    public void setUserName(String name) {
+        user.setName(name);
     }
 
     /**

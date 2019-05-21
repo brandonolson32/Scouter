@@ -9,6 +9,7 @@ public class Interactor {
 
     protected Interactor(Repository repo) {
         myRepo = repo;
+        myRepo.generateCharacters();
     }
 
     protected Repository getRepo() {

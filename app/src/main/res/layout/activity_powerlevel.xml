@@ -11,60 +11,65 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/allcharacters"
-            android:layout_width="match_parent"
-            android:layout_height="201dp"
-            android:layout_alignParentBottom="true"
-            android:baselineAlignBottom="true"
-            android:scaleType="fitEnd"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/allcharacters" />
-
-        <TextView
-            android:id="@+id/powerlevel"
-            android:layout_width="198dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/reading"
-            android:layout_alignRight="@id/allcharacters"
-            android:layout_marginTop="113dp"
-            android:ems="10"
-            android:fontFamily="monospace"
-            android:gravity="right|center_vertical"
-            android:inputType="textPersonName"
-            android:textColor="#3656F4"
-            android:textSize="36sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/reading"
-            android:layout_width="wrap_content"
-            android:layout_height="412dp"
-            android:layout_above="@id/allcharacters"
-            android:layout_alignParentRight="true"
-            android:alpha=".4"
-            app:srcCompat="@drawable/scouterreading" />
-
         <TextView
             android:id="@+id/statreader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#5C5C5C"
-            android:textColor="#FFFFFF" />
+            android:text="this will read some stats"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/powerlevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:gravity="right|center_vertical"
+            android:inputType="textPersonName"
+            android:text="powerlevel"
+            android:textColor="#3656F4"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="@id/reading"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.8" />
 
         <TextView
             android:id="@+id/characterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/powerlevel"
-            android:layout_alignRight="@id/allcharacters"
-            android:layout_alignBottom="@+id/reading"
             android:layout_alignParentBottom="false"
-            android:layout_centerInParent="false"
-            android:layout_marginTop="106dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginBottom="121dp"
-            android:textSize="18sp" />
+            android:layout_marginTop="82dp"
+            android:gravity="fill_vertical"
+            android:text="charname"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/reading"
+            app:layout_constraintRight_toRightOf="@id/reading"
+            app:layout_constraintHorizontal_bias="0.8" />
+
+        <ImageView
+            android:id="@+id/allcharacters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:baselineAlignBottom="true"
+            android:scaleType="fitEnd"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/allcharacters" />
+
+        <ImageView
+            android:id="@+id/reading"
+            android:layout_width="match_parent"
+            android:layout_height="417dp"
+            android:alpha=".4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statreader"
+            app:srcCompat="@drawable/scouterreading" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

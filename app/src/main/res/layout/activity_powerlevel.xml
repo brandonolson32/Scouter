@@ -1,19 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#45B649" >
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.scouter.views.ScouterDisplay">
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/allcharacters"
+            android:layout_width="match_parent"
+            android:layout_height="201dp"
+            android:layout_alignParentBottom="true"
+            android:baselineAlignBottom="true"
+            android:scaleType="fitEnd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/allcharacters" />
 
         <TextView
-            android:id="@+id/pl"
+            android:id="@+id/powerlevel"
+            android:layout_width="198dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/reading"
+            android:layout_alignRight="@id/allcharacters"
+            android:layout_marginTop="113dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:gravity="right|center_vertical"
+            android:inputType="textPersonName"
+            android:textColor="#3656F4"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/reading"
+            android:layout_width="wrap_content"
+            android:layout_height="412dp"
+            android:layout_above="@id/allcharacters"
+            android:layout_alignParentRight="true"
+            android:alpha=".4"
+            app:srcCompat="@drawable/scouterreading" />
+
+        <TextView
+            android:id="@+id/statreader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"/>
+            android:background="#5C5C5C"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/characterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/powerlevel"
+            android:layout_alignRight="@id/allcharacters"
+            android:layout_alignBottom="@+id/reading"
+            android:layout_alignParentBottom="false"
+            android:layout_centerInParent="false"
+            android:layout_marginTop="106dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="121dp"
+            android:textSize="18sp" />
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -2,7 +2,12 @@ package com.example.scouter.model;
 
 import android.util.Log;
 
+import com.example.scouter.entity.Character.LifeForm;
 import com.example.scouter.entity.User;
+
+import java.util.List;
+
+import static com.example.scouter.model.Repository.getLifeForms;
 
 /**
  * This class is the interactor for the User
@@ -93,5 +98,21 @@ public class UserInteractor extends Interactor {
     public void setName(String name) {
         repo = getRepo();
         repo.setUserName(name);
+    }
+
+    public LifeForm getComparableLifeForm() {
+        int pl = this.getPowerLevel();
+        repo = getRepo();
+        List<LifeForm> lf = getLifeForms();
+        int index = 0;
+        for (int i = 0; i < lf.size(); i++) {
+            if (pl > lf.get(i).getPowerLevel()) {
+                index++;
+            }
+        }
+        if (index == 0) {
+            return lf.get(index);
+        }
+        return lf.get(index - 1);
     }
 }

@@ -11,9 +11,11 @@ import com.example.scouter.viewmodels.EditUserViewModel;
 public class ScouterDisplay extends AppCompatActivity {
     private EditUserViewModel model;
 
-    private TextView sr;
-    private TextView pl;
-    private TextView characterName;
+    private TextView userName;
+    private TextView powerLevel;
+    private TextView squatMax;
+    private TextView benchMax;
+    private TextView deadliftMax;
 
     @Override
     /*
@@ -26,13 +28,16 @@ public class ScouterDisplay extends AppCompatActivity {
 
         model = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
-        pl = findViewById(R.id.powerlevel);
-        sr = findViewById(R.id.statreader);
-        characterName = findViewById(R.id.characterName);
-        characterName.setText(model.comparableLifeForm().getName());
-        sr.setText(String.format("With a squat of %d, a bench of %d, and a deadlift of %d, %s has a power level of ...",
-                model.getUser().getSquat(), model.getUser().getBench(), model.getUser().getDeadlift(),
-                model.getUser().getName(), model.getPowerLevel()));
-        pl.setText(String.valueOf(model.getPowerLevel()));
+        userName = findViewById(R.id.name_field);
+        powerLevel = findViewById(R.id.powerlevel);
+        squatMax = findViewById(R.id.squat_max_field);
+        benchMax = findViewById(R.id.bench_max_field);
+        deadliftMax = findViewById(R.id.deadlift_max_field);
+
+        userName.setText(model.getName());
+        powerLevel.setText(String.valueOf(model.getPowerLevel()));
+        squatMax.setText(model.getUser().getSquat());
+        benchMax.setText(model.getUser().getBench());
+        deadliftMax.setText(model.getUser().getBench());
     }
 }

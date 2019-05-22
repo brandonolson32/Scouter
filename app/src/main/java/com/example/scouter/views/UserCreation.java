@@ -79,8 +79,6 @@ public class UserCreation extends AppCompatActivity {
                 UserCreation.this.startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
             }
         });
-
-
     }
 
     /**

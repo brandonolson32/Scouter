@@ -1,70 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:background="@drawable/powerlevelscreen"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" >-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/powerlevel"-->
+            <!--android:layout_width="198dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignTop="@id/reading"-->
+            <!--android:layout_alignRight="@id/allcharacters"-->
+            <!--android:layout_marginTop="113dp"-->
+            <!--android:ems="10"-->
+            <!--android:fontFamily="monospace"-->
+            <!--android:gravity="right|center_vertical"-->
+            <!--android:inputType="textPersonName"-->
+            <!--android:textColor="#3656F4"-->
+            <!--android:textSize="36sp"-->
+            <!--android:textStyle="bold" />-->
+
+    <!--</RelativeLayout>-->
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/powerlevelscreen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#45B649" >
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/name_field"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@id/left_guideline"
+        android:layout_alignTop="@id/top_guideline"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#3656F4"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
 
-        <ImageView
-            android:id="@+id/allcharacters"
-            android:layout_width="match_parent"
-            android:layout_height="201dp"
-            android:layout_alignParentBottom="true"
-            android:baselineAlignBottom="true"
-            android:scaleType="fitEnd"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/allcharacters" />
+    <TextView
+        android:id="@+id/powerlevel"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@id/left_guideline"
+        android:layout_alignTop="@id/name_field"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#3656F4"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/name_field" />
 
-        <TextView
-            android:id="@+id/powerlevel"
-            android:layout_width="198dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/reading"
-            android:layout_alignRight="@id/allcharacters"
-            android:layout_marginTop="113dp"
-            android:ems="10"
-            android:fontFamily="monospace"
-            android:gravity="right|center_vertical"
-            android:inputType="textPersonName"
-            android:textColor="#3656F4"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/squat_max_field"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@id/left_guideline"
+        android:layout_alignTop="@id/powerlevel"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#3656F4"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/powerlevel" />
 
-        <ImageView
-            android:id="@+id/reading"
-            android:layout_width="wrap_content"
-            android:layout_height="412dp"
-            android:layout_above="@id/allcharacters"
-            android:layout_alignParentRight="true"
-            android:alpha=".4"
-            app:srcCompat="@drawable/scouterreading" />
+    <TextView
+        android:id="@+id/bench_max_field"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@id/left_guideline"
+        android:layout_alignTop="@id/squat_max_field"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#3656F4"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/squat_max_field" />
 
-        <TextView
-            android:id="@+id/statreader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#5C5C5C"
-            android:textColor="#FFFFFF" />
+    <TextView
+        android:id="@+id/deadlift_max_field"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@id/left_guideline"
+        android:layout_alignTop="@id/bench_max_field"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#3656F4"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/bench_max_field" />
 
-        <TextView
-            android:id="@+id/characterName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/powerlevel"
-            android:layout_alignRight="@id/allcharacters"
-            android:layout_alignBottom="@+id/reading"
-            android:layout_alignParentBottom="false"
-            android:layout_centerInParent="false"
-            android:layout_marginTop="106dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginBottom="121dp"
-            android:textSize="18sp" />
-    </RelativeLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent=".85"
+        android:orientation="vertical"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent=".85"
+        android:orientation="horizontal"/>
+
+    <!--<Button-->
+        <!--android:text="Button"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:id="@+id/button"-->
+        <!--app:layout_constraintLeft_toLeftOf="@+id/left_guideline"-->
+        <!--app:layout_constraintRight_toRightOf="@+id/right_guideline"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/top_guideline"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline" />-->
 
 </android.support.constraint.ConstraintLayout>

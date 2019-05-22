@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * @author Shane - shanelee.co.uk
+ * @author Brandon and JC
  */
 
 
@@ -37,15 +36,31 @@ public class WebScrape {
                     "table.wikitable tr")) {
                 Elements data = row.select("td");
                 // if the row contains a character
-                if (!data.get(0).hasText()) {
+                if (data.get(0).text().equals("Saga")) {
+                    continue;
+                } else if (!data.get(0).hasText()) {
                     try {
-                        LifeForm newGuy = new LifeForm(data.get(1).text(), Integer.parseInt(data.get(2).text().replaceAll("[^.0123456789]","")));
+                        LifeForm newGuy = new LifeForm(data.get(1).text(),
+                                Double.parseDouble(data.get(2).text()
+                                        .replaceAll("[^-.0123456789]","")));
                         motherOfData.get(saga).add(newGuy);
                     }
-                    catch (NumberFormatException e) {}
-                } else {
+                        catch (NumberFormatException e) {}
+                } else if (!data.get(1).hasText()) {
                     saga = data.get(0).text();
+                    if (saga.equals("Red Ribbon Army Saga")
+                            && motherOfData.containsKey(saga)) {
+                        break;
+                    }
                     motherOfData.put(saga, new ArrayList<LifeForm>());
+                } else if (data.get(1).hasText()) {
+                    LifeForm newGuy = new LifeForm(data.get(1).text(),
+                            Double.parseDouble(data.get(2).text()
+                                    .replaceAll("[^0123456789]","")));
+                    motherOfData.remove(saga);
+                    saga = saga + " " + data.get(0).text();
+                    motherOfData.put(saga, new ArrayList<LifeForm>());
+                    motherOfData.get(saga).add(newGuy);
                 }
             }
             for (String s: motherOfData.keySet()){

@@ -3,9 +3,9 @@ package com.example.scouter.entity.Character;
 public class LifeForm implements Comparable<LifeForm> {
 
     protected String name;
-    private int powerLevel;
+    private double powerLevel;
 
-    public LifeForm(String name, int powerLevel) {
+    public LifeForm(String name, double powerLevel) {
         this.name = name;
         this.powerLevel = powerLevel;
     }
@@ -14,13 +14,15 @@ public class LifeForm implements Comparable<LifeForm> {
         return name;
     }
 
-    public int getPowerLevel() {
+    public double getPowerLevel() {
         return powerLevel;
     }
 
     @Override
     public int hashCode() {
-        return this.powerLevel;
+        int result = 17;
+        result = 31 * result + name.hashCode();
+        return result;
     }
 
     @Override

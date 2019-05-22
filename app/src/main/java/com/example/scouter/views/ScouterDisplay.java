@@ -36,8 +36,8 @@ public class ScouterDisplay extends AppCompatActivity {
 
         userName.setText(model.getName());
         powerLevel.setText(String.valueOf(model.getPowerLevel()));
-        squatMax.setText(model.getUser().getSquat());
-        benchMax.setText(model.getUser().getBench());
-        deadliftMax.setText(model.getUser().getBench());
+        squatMax.setText(String.valueOf(model.getUser().getSquat()));
+        benchMax.setText(String.valueOf(model.getUser().getBench()));
+        deadliftMax.setText(String.valueOf(model.getUser().getDeadlift()));
     }
 }

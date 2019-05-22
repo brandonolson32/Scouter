@@ -36,108 +36,121 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/leftCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.1595"
+        android:orientation="vertical"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/rightCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5172"
+        android:orientation="vertical"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/topCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1456" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/bottomCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.3432"
+        android:orientation="horizontal"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.3905"
+        android:orientation="horizontal"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/leftLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.7155"
+        android:orientation="vertical"/>
+
     <TextView
         android:id="@+id/name_field"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@id/left_guideline"
-        android:layout_alignTop="@id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/leftCircle"
+        android:layout_alignTop="@id/topCircle"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:textColor="#3656F4"
-        android:textSize="36sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
+        app:layout_constraintLeft_toRightOf="@+id/leftCircle"
+        app:layout_constraintTop_toTopOf="@+id/topCircle" />
 
     <TextView
         android:id="@+id/powerlevel"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@id/left_guideline"
-        android:layout_alignTop="@id/name_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/leftLine"
+        android:layout_alignBottom="@id/line"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:textColor="#3656F4"
-        android:textSize="36sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/name_field" />
+        app:layout_constraintStart_toStartOf="@+id/leftLine"
+        app:layout_constraintBottom_creator="@+id/line" />
 
     <TextView
         android:id="@+id/squat_max_field"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@id/left_guideline"
-        android:layout_alignTop="@id/powerlevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/leftCircle"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:textColor="#3656F4"
-        android:textSize="36sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintStart_toStartOf="@+id/leftCircle"
         app:layout_constraintTop_toBottomOf="@+id/powerlevel" />
 
     <TextView
         android:id="@+id/bench_max_field"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/leftCircle"
         android:layout_alignTop="@id/squat_max_field"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:textColor="#3656F4"
-        android:textSize="36sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintStart_toStartOf="@+id/leftCircle"
         app:layout_constraintTop_toBottomOf="@+id/squat_max_field" />
 
     <TextView
         android:id="@+id/deadlift_max_field"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/leftCircle"
         android:layout_alignTop="@id/bench_max_field"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:textColor="#3656F4"
-        android:textSize="36sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintStart_toStartOf="@+id/leftCircle"
         app:layout_constraintTop_toBottomOf="@+id/bench_max_field" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.12" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent=".85"
-        android:orientation="vertical"/>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.13" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent=".85"
-        android:orientation="horizontal"/>
 
     <!--<Button-->
         <!--android:text="Button"-->

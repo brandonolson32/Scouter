@@ -34,10 +34,14 @@ public class ScouterDisplay extends AppCompatActivity {
         benchMax = findViewById(R.id.bench_max_field);
         deadliftMax = findViewById(R.id.deadlift_max_field);
 
+        String squatDisplay = "Squat: " + model.getUser().getSquat();
+        String benchDisplay = "Bench: " + model.getUser().getBench();
+        String deadliftDisplay = "Deadlift: " + model.getUser().getDeadlift();
+
         userName.setText(model.getName());
         powerLevel.setText(String.valueOf(model.getPowerLevel()));
-        squatMax.setText(String.valueOf(model.getUser().getSquat()));
-        benchMax.setText(String.valueOf(model.getUser().getBench()));
-        deadliftMax.setText(String.valueOf(model.getUser().getDeadlift()));
+        squatMax.setText(squatDisplay);
+        benchMax.setText(benchDisplay);
+        deadliftMax.setText(deadliftDisplay);
     }
 }

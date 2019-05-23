@@ -84,13 +84,12 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/leftCircle"
         android:layout_alignTop="@id/topCircle"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#3656F4"
-        android:textSize="12sp"
+        android:textColor="#FF0034"
+        android:textSize="30sp"
         android:textStyle="bold"
+        app:fontFamily="@font/bangers"
         app:layout_constraintLeft_toRightOf="@+id/leftCircle"
+        app:layout_constraintRight_toLeftOf="@+id/rightCircle"
         app:layout_constraintTop_toTopOf="@+id/topCircle" />
 
     <TextView
@@ -99,28 +98,25 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/leftLine"
         android:layout_alignBottom="@id/line"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#3656F4"
-        android:textSize="12sp"
+        android:textColor="#70EC1C"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/leftLine"
-        app:layout_constraintBottom_creator="@+id/line" />
+        app:fontFamily="@font/press_start_2p"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintLeft_toRightOf="@+id/leftLine" />
 
     <TextView
         android:id="@+id/squat_max_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/leftCircle"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#3656F4"
-        android:textSize="12sp"
+        android:textColor="#FFE700"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/leftCircle"
-        app:layout_constraintTop_toBottomOf="@+id/powerlevel" />
+        app:fontFamily="@font/caesar_dressing"
+        app:layout_constraintLeft_toRightOf="@+id/leftCircle"
+        app:layout_constraintRight_toLeftOf="@+id/rightCircle"
+        app:layout_constraintTop_toBottomOf="@id/name_field" />
 
     <TextView
         android:id="@+id/bench_max_field"
@@ -128,13 +124,11 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/leftCircle"
         android:layout_alignTop="@id/squat_max_field"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#3656F4"
-        android:textSize="12sp"
+        android:textColor="#FFE300"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/leftCircle"
+        app:layout_constraintLeft_toRightOf="@+id/leftCircle"
+        app:layout_constraintRight_toLeftOf="@+id/rightCircle"
         app:layout_constraintTop_toBottomOf="@+id/squat_max_field" />
 
     <TextView
@@ -143,13 +137,11 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/leftCircle"
         android:layout_alignTop="@id/bench_max_field"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#3656F4"
-        android:textSize="12sp"
+        android:textColor="#FFD400"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/leftCircle"
+        app:layout_constraintLeft_toRightOf="@+id/leftCircle"
+        app:layout_constraintRight_toLeftOf="@+id/rightCircle"
         app:layout_constraintTop_toBottomOf="@+id/bench_max_field" />
 
     <!--<Button-->

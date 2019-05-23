@@ -95,7 +95,7 @@ public class Repository {
      * Gets the User's power level
      * @return int the power level of the user
      */
-    public int getUserPowerLevel() {
+    public double getUserPowerLevel() {
         return user.getPowerLevel();
     }
 

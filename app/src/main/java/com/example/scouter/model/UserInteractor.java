@@ -77,7 +77,7 @@ public class UserInteractor extends Interactor {
      * Gets the User's power level
      * @return int the power level of the user
      */
-    public int getPowerLevel() {
+    public double getPowerLevel() {
         repo = getRepo();
         return repo.getUserPowerLevel();
     }
@@ -101,7 +101,7 @@ public class UserInteractor extends Interactor {
     }
 
     public LifeForm getComparableLifeForm() {
-        int pl = this.getPowerLevel();
+        double pl = this.getPowerLevel();
         repo = getRepo();
         List<LifeForm> lf = getLifeForms();
         int index = 0;

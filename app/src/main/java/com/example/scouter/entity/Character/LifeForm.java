@@ -11,6 +11,12 @@ public class LifeForm implements Comparable<LifeForm> {
         this.powerLevel = powerLevel;
     }
 
+    public LifeForm(String name, double powerLevel, String saga) {
+        this.name = name;
+        this.powerLevel = powerLevel;
+        this.saga = saga;
+    }
+
     public String getName() {
         return name;
     }

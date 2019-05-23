@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -71,12 +72,19 @@ public class UserCreation extends AppCompatActivity {
         computeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(nameField.getText().toString(),
-                        Integer.parseInt(squatMaxField.getText().toString()),
-                        Integer.parseInt(benchMaxField.getText().toString()),
-                        Integer.parseInt(deadliftMaxField.getText().toString()));
-                userViewModel.addUser(user);
-                UserCreation.this.startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
+                if (nameField.getText().toString().matches("")
+                        || benchMaxField.getText().toString().matches("")
+                        || deadliftMaxField.getText().toString().matches("")
+                        || squatMaxField.getText().toString().matches("")) {
+                    Toast.makeText(UserCreation.this, "No fields can be blank", Toast.LENGTH_SHORT).show();
+                } else {
+                    User user = new User(nameField.getText().toString(),
+                            Integer.parseInt(squatMaxField.getText().toString()),
+                            Integer.parseInt(benchMaxField.getText().toString()),
+                            Integer.parseInt(deadliftMaxField.getText().toString()));
+                    userViewModel.addUser(user);
+                    UserCreation.this.startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
+                }
             }
         });
     }

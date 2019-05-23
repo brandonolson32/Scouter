@@ -12,10 +12,10 @@ public class Scouter {
             return (int) pow(10, 9);
         } else if (squat < 970 && bench < 540 && deadlift < 1041) {
             return (int) Math.round(10000 - (pow(970 - squat, 2) + pow(540 - bench, 2)
-                    + pow(1041 - deadlift, 2))/223.25);
+                    + pow(1000 - deadlift, 2))/223.25);
         } else {
             return (int) Math.round(10000 + (pow(970 - squat, 2) + pow(540 - bench, 2)
-                    + pow(1041 - deadlift, 2))/223.25);
+                    + pow(1000 - deadlift, 2))/223.25);
         }
     }
 }

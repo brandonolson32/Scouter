@@ -1,5 +1,6 @@
 package com.example.scouter.model;
 
+import com.example.scouter.entity.Character.Krillin;
 import com.example.scouter.entity.Character.LifeForm;
 
 import org.jsoup.Jsoup;
@@ -7,6 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +21,7 @@ import java.util.Map;
 
 public class WebScrape {
 
-    String saga;
-    String character;
-    String powerLevel;
-    String source;
-
-    public static void main(String[] args) {
+    public static Map<String, ArrayList<LifeForm>> webScrape() {
         Map<String, ArrayList<LifeForm>> motherOfData = new HashMap<>();
         final String url =
                 "https://dragonball.fandom.com/wiki/List_of_Power_Levels";
@@ -63,16 +60,25 @@ public class WebScrape {
                     motherOfData.get(saga).add(newGuy);
                 }
             }
-            for (String s: motherOfData.keySet()){
-                String key = s;
-                String value = motherOfData.get(s).toString();
-                System.out.println(key + " " + value);
-            }
+//            for (String s: motherOfData.keySet()){
+//                String key = s;
+//                String value = motherOfData.get(s).toString();
+//                System.out.println(key + " " + value);
+//            }
         }
         catch (Exception ex) {
             ex.printStackTrace();
         }
 
+        return motherOfData;
     }
+
+//    public static void assignSagas(Map<String, ArrayList<LifeForm>> motherOfData) {
+//        for (Key saga : motherOfData.keySet()) {
+//            for (LifeForm being : motherOfData.get(saga)) {
+//                being.setSaga(saga);
+//            }
+//        }
+//    }
 
 }

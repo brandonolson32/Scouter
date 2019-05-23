@@ -36,21 +36,29 @@ public class Repository {
      * Make a new Repository object
      */
     public Repository() {
-        lifeForms = new ArrayList<>();
+        lifeForms = generateCharacters();
+        for (LifeForm lifeForm : lifeForms) {
+            System.out.println(lifeForm.toString());
+        }
     }
 
     /**
      * Stores characters in the array
      */
-    public void generateCharacters() {
-        lifeForms.add(new Goku());
-        lifeForms.add(new Farmer());
-        lifeForms.add(new Frieza());
-        lifeForms.add(new Krillin());
-        lifeForms.add(new MrPopo());
-        lifeForms.add(new Nail());
-        lifeForms.add(new Piccolo());
+    public List<LifeForm> generateCharacters() {
+        ArrayList<LifeForm> lifeForms = new ArrayList<>();
+
+        Map<String, ArrayList<LifeForm>> scrapedMap = WebScrape.webScrape();
+
+        for (String saga : scrapedMap.keySet()) {
+            for (LifeForm lifeForm : scrapedMap.get(saga)) {
+                LifeForm newLifeForm =
+                        new LifeForm(lifeForm.getName(), lifeForm.getPowerLevel(), saga);
+                lifeForms.add(newLifeForm);
+            }
+        }
         Collections.sort(lifeForms);
+        return lifeForms;
     }
 
     public static List<LifeForm> getLifeForms() {

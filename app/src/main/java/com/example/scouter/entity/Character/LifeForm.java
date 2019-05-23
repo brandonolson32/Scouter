@@ -4,6 +4,7 @@ public class LifeForm implements Comparable<LifeForm> {
 
     protected String name;
     private double powerLevel;
+    private String saga;
 
     public LifeForm(String name, double powerLevel) {
         this.name = name;
@@ -16,6 +17,10 @@ public class LifeForm implements Comparable<LifeForm> {
 
     public double getPowerLevel() {
         return powerLevel;
+    }
+
+    public String getSaga() {
+        return saga;
     }
 
     @Override

@@ -101,7 +101,7 @@
         android:textColor="#FF0034"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:fontFamily="@font/bangers"
+        app:fontFamily="@font/caesar_dressing"
         app:layout_constraintLeft_toRightOf="@+id/leftCircle"
         app:layout_constraintRight_toLeftOf="@+id/rightCircle"
         app:layout_constraintTop_toTopOf="@+id/topCircle" />
@@ -184,6 +184,5 @@
         app:layout_constraintLeft_toRightOf="@+id/weakerButton"
         app:layout_constraintRight_toLeftOf="@+id/buttonLineVr"
         app:layout_constraintTop_toTopOf="@+id/buttonLineHz" />
-
 
 </android.support.constraint.ConstraintLayout>

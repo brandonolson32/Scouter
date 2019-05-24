@@ -76,14 +76,16 @@ public class UserCreation extends AppCompatActivity {
                         || benchMaxField.getText().toString().matches("")
                         || deadliftMaxField.getText().toString().matches("")
                         || squatMaxField.getText().toString().matches("")) {
-                    Toast.makeText(UserCreation.this, "No fields can be blank", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserCreation.this, "No fields can be blank",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     User user = new User(nameField.getText().toString(),
                             Integer.parseInt(squatMaxField.getText().toString()),
                             Integer.parseInt(benchMaxField.getText().toString()),
                             Integer.parseInt(deadliftMaxField.getText().toString()));
+                    UserCreation.this.startActivity(new Intent(UserCreation.this,
+                            ScouterDisplay.class));
                     model.addUser(user);
-                    UserCreation.this.startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
                 }
             }
         });

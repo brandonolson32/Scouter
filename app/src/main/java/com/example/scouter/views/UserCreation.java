@@ -33,7 +33,7 @@ import java.util.HashMap;
  */
 public class UserCreation extends AppCompatActivity {
 
-    private static EditUserViewModel userViewModel;
+    private static EditUserViewModel model;
 
     private EditText nameField;
     private EditText squatMaxField;
@@ -64,7 +64,7 @@ public class UserCreation extends AppCompatActivity {
         benchMaxField = findViewById(R.id.bench_max_field);
         deadliftMaxField = findViewById(R.id.deadlift_max_field);
 
-        userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
+        model = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -83,47 +83,11 @@ public class UserCreation extends AppCompatActivity {
                             Integer.parseInt(squatMaxField.getText().toString()),
                             Integer.parseInt(benchMaxField.getText().toString()),
                             Integer.parseInt(deadliftMaxField.getText().toString()));
-
-
-
-                    userViewModel.addUser(user);
                     UserCreation.this.startActivity(new Intent(UserCreation.this,
                             ScouterDisplay.class));
+                    model.addUser(user);
                 }
             }
         });
-    }
-
-    /**
-     * This function adds info to the user
-     */
-    private void addUser(){
-        this.url = this.baseUrl + "/player";
-
-        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
-        // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend reading the office docs:
-        // https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("user_id", userViewModel.getId());
-        params.put("user_name", userViewModel.getName());
-        params.put("user_power_level", userViewModel.getPowerLevel());
-        JSONObject postparams = new JSONObject(params);
-        Log.i("Test", postparams.toString());
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                url, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("Volley", "You did it!");
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("Volley", error.toString());
-                    }
-                });
-        requestQueue.add(jsonObjReq);
     }
 }

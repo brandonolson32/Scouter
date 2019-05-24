@@ -10,6 +10,14 @@ public final class Model {
 
     private final UserInteractor userInteractor;
 
+    /**
+     * Make a new Model instance
+     */
+    public Model() {
+        myRepository = new Repository();
+        userInteractor = new UserInteractor(myRepository);
+    }
+
     /** Singleton Pattern Code
      *  this allows us to get access to this class
      *  anywhere, which will allow our View models to access
@@ -22,14 +30,6 @@ public final class Model {
      * @return Model the instance
      */
     public static Model getInstance() { return instance; }
-
-    /**
-     * Make a new Model instance
-     */
-    private Model() {
-        myRepository = new Repository();
-        userInteractor = new UserInteractor(myRepository);
-    }
 
     /**
      * Returns the current UserInteractor

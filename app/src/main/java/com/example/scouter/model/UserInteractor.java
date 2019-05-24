@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.scouter.entity.Character.LifeForm;
 import com.example.scouter.entity.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.scouter.model.Repository.getLifeForms;
@@ -100,19 +101,16 @@ public class UserInteractor extends Interactor {
         repo.setUserName(name);
     }
 
-    public LifeForm getComparableLifeForm() {
-        double pl = this.getPowerLevel();
+    public void getComparableLifeForm() {
         repo = getRepo();
-        List<LifeForm> lf = getLifeForms();
-        int index = 0;
-        for (int i = 0; i < lf.size(); i++) {
-            if (pl > lf.get(i).getPowerLevel()) {
-                index++;
-            }
-        }
-        if (index == 0) {
-            return lf.get(index);
-        }
-        return lf.get(index - 1);
+        repo.getWeakerStronger();
+    }
+
+    public LifeForm getWeakerFoe() {
+        return user.getWeakerFoe();
+    }
+
+    public LifeForm getStrongerFoe() {
+        return user.getStrongerFoe();
     }
 }

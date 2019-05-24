@@ -28,10 +28,13 @@ public class WebScrape {
 
     public static void main(String[] args) {
 //        Map<String, ArrayList<LifeForm>> scrapedMap = webScrape();
-        Repository.generateCharacters();
+
+//        Repository.generateCharacters();
+
+        webScrape();
     }
 
-    public static Map<String, ArrayList<LifeForm>> webScrape() {
+    public static ArrayList<LifeForm> webScrape() {
         Map<String, ArrayList<LifeForm>> motherOfData = new HashMap<>();
         final String url =
                 "https://dragonball.fandom.com/wiki/List_of_Power_Levels";
@@ -70,16 +73,32 @@ public class WebScrape {
                     motherOfData.get(saga).add(newGuy);
                 }
             }
-            /**
-             for (String s: motherOfData.keySet()){
-             String key = s;
-             String value = motherOfData.get(s).toString();
-             System.out.println(key + " " + value);
-             }*/
+
+//             for (String s: motherOfData.keySet()){
+//             String key = s;
+//             String value = motherOfData.get(s).toString();
+//             System.out.println(key + " " + value);
+//             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        return motherOfData;
+
+
+
+        ArrayList<LifeForm> lifeForms = new ArrayList<>();
+        for (String saga : motherOfData.keySet()) {
+            for (LifeForm lf : motherOfData.get(saga)) {
+                LifeForm newLifeForm =
+                        new LifeForm(lf.getName(), lf.getPowerLevel(), saga);
+                lifeForms.add(newLifeForm);
+            }
+        }
+        Collections.sort(lifeForms);
+        for (LifeForm lifeForm : lifeForms) {
+            System.out.println(lifeForm.toString());
+        }
+
+        return lifeForms;
     }
 }

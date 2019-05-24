@@ -22,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 
 import com.example.scouter.R;
 import com.example.scouter.entity.User;
+import com.example.scouter.model.Model;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
 import org.json.JSONObject;
@@ -33,7 +34,7 @@ import java.util.HashMap;
  */
 public class UserCreation extends AppCompatActivity {
 
-    private static EditUserViewModel model;
+    private static EditUserViewModel userViewModel;
 
     private EditText nameField;
     private EditText squatMaxField;
@@ -64,7 +65,7 @@ public class UserCreation extends AppCompatActivity {
         benchMaxField = findViewById(R.id.bench_max_field);
         deadliftMaxField = findViewById(R.id.deadlift_max_field);
 
-        model = ViewModelProviders.of(this).get(EditUserViewModel.class);
+        userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -83,9 +84,9 @@ public class UserCreation extends AppCompatActivity {
                             Integer.parseInt(squatMaxField.getText().toString()),
                             Integer.parseInt(benchMaxField.getText().toString()),
                             Integer.parseInt(deadliftMaxField.getText().toString()));
+                    userViewModel.addUser(user);
                     UserCreation.this.startActivity(new Intent(UserCreation.this,
                             ScouterDisplay.class));
-                    model.addUser(user);
                 }
             }
         });

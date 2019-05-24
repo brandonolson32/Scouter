@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:label="@string/app_name" android:name=".views.ScouterDisplay"/>
+        <activity android:label="@string/app_name" android:name=".views.StrongerCharacter"/>
+        <activity android:label="@string/app_name" android:name=".views.WeakerCharacter"/>
 
         <meta-data
             android:name="preloaded_fonts"

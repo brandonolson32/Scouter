@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Scouter</string>
+    <string name="weakerButtonLabel">Guy Below You</string>
+    <string name="restartText">home</string>
+    <string name="next_challenge">Next Challenge</string>
 </resources>

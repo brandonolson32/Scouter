@@ -22,7 +22,14 @@ public class Repository {
 
     private static int next_id = 1;
     private User user;
-    private static List<LifeForm> lifeForms; // All the lifeForms
+    private static List<LifeForm> lifeForms;
+
+    /**
+     * Make a new Repository object
+     */
+    public Repository() {
+        this.generateCharacters();
+    }
 
     /***
      * Generate unique numbers to be used as keys
@@ -33,32 +40,20 @@ public class Repository {
     }
 
     /**
-     * Make a new Repository object
-     */
-    public Repository() {
-        lifeForms = generateCharacters();
-        for (LifeForm lifeForm : lifeForms) {
-            System.out.println(lifeForm.toString());
-        }
-    }
-
-    /**
      * Stores characters in the array
      */
-    public List<LifeForm> generateCharacters() {
-        ArrayList<LifeForm> lifeForms = new ArrayList<>();
-
+    public void generateCharacters() {
         Map<String, ArrayList<LifeForm>> scrapedMap = WebScrape.webScrape();
 
         for (String saga : scrapedMap.keySet()) {
-            for (LifeForm lifeForm : scrapedMap.get(saga)) {
+            for (LifeForm lf : scrapedMap.get(saga)) {
                 LifeForm newLifeForm =
-                        new LifeForm(lifeForm.getName(), lifeForm.getPowerLevel(), saga);
+                        new LifeForm(lf.getName(), lf.getPowerLevel(), saga);
                 lifeForms.add(newLifeForm);
             }
         }
+        lifeForms.add(user);
         Collections.sort(lifeForms);
-        return lifeForms;
     }
 
     public static List<LifeForm> getLifeForms() {
@@ -121,5 +116,21 @@ public class Repository {
      */
     public void setId(int id) {
         user.setId(id);
+    }
+
+    public void getWeakerStronger() {
+        this.generateCharacters();
+        //int index = lifeForms.indexOf(user);
+        int index = 35;
+        if (index == 0) {
+            user.setStrongerFoe(lifeForms.get(0));
+            user.setWeakerFoe(new LifeForm("Tardigrade", 0, "Goeze Saga"));
+        } else if (index == lifeForms.size()) {
+            user.setStrongerFoe(new LifeForm("Polycephabrick", Double.POSITIVE_INFINITY, "Brick Boys"));
+            user.setWeakerFoe(lifeForms.get(lifeForms.size() - 1));
+        } else {
+            user.setStrongerFoe(lifeForms.get(index + 1));
+            user.setWeakerFoe(lifeForms.get(index - 1));
+        }
     }
 }

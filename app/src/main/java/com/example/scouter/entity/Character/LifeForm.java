@@ -4,7 +4,7 @@ public class LifeForm implements Comparable<LifeForm> {
 
     protected String name;
     private double powerLevel;
-    private String saga;
+    private String saga = "";
 
     public LifeForm(String name, double powerLevel) {
         this.name = name;
@@ -50,6 +50,9 @@ public class LifeForm implements Comparable<LifeForm> {
 
     @Override
     public int compareTo(LifeForm lf) {
+        if (lf == null) {
+            return 0;
+        }
         if (this.powerLevel > lf.powerLevel) {
             return 1;
         } else if (this.powerLevel == lf.powerLevel) {
@@ -61,6 +64,6 @@ public class LifeForm implements Comparable<LifeForm> {
 
     @Override
     public String toString() {
-        return this.name + " " + powerLevel;
+        return this.name + " (" + powerLevel + ") from " + saga;
     }
 }

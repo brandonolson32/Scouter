@@ -7,12 +7,16 @@ public class User extends LifeForm {
     private int squat;
     private int bench;
     private int deadlift;
+    private LifeForm weakerFoe;
+    private LifeForm strongerFoe;
 
     public User(String name, int s, int b, int d) {
         super(name, Scouter.computePowerLevel(s, b, d));
         squat = s;
         bench = b;
         deadlift = d;
+        weakerFoe = this;
+        strongerFoe = this;
     }
 
     /**
@@ -44,4 +48,8 @@ public class User extends LifeForm {
     public int getDeadlift() {
         return this.deadlift;
     }
+    public LifeForm getWeakerFoe() { return this.weakerFoe; }
+    public LifeForm getStrongerFoe() { return this.strongerFoe; }
+    public void setWeakerFoe(LifeForm wf) { this.weakerFoe = wf; }
+    public void setStrongerFoe(LifeForm sf) { this.strongerFoe = sf; }
 }

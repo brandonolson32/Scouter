@@ -40,17 +40,10 @@ public class Repository {
     }
 
     /**
-     * Make a new Repository object
-     */
-    public Repository() {
-        lifeForms = generateCharacters();
-    }
-
-    /**
      * Stores characters in the array
      */
     public static List<LifeForm> generateCharacters() {
-        ArrayList<LifeForm> lifeForms = new ArrayList<>();
+//        ArrayList<LifeForm> lifeForms = new ArrayList<>();
         Map<String, ArrayList<LifeForm>> scrapedMap = WebScrape.webScrape();
 
         for (String saga : scrapedMap.keySet()) {
@@ -60,7 +53,6 @@ public class Repository {
                 lifeForms.add(newLifeForm);
             }
         }
-        lifeForms.add(user);
         Collections.sort(lifeForms);
         for (LifeForm lifeForm : lifeForms) {
             System.out.println(lifeForm.toString());

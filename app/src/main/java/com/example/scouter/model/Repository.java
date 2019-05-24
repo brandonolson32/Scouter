@@ -28,7 +28,7 @@ public class Repository {
      * Make a new Repository object
      */
     public Repository() {
-        this.generateCharacters();
+        lifeForms = generateCharacters();
     }
 
     /***
@@ -43,21 +43,8 @@ public class Repository {
      * Stores characters in the array
      */
     public static List<LifeForm> generateCharacters() {
-//        ArrayList<LifeForm> lifeForms = new ArrayList<>();
-        Map<String, ArrayList<LifeForm>> scrapedMap = WebScrape.webScrape();
-
-        for (String saga : scrapedMap.keySet()) {
-            for (LifeForm lf : scrapedMap.get(saga)) {
-                LifeForm newLifeForm =
-                        new LifeForm(lf.getName(), lf.getPowerLevel(), saga);
-                lifeForms.add(newLifeForm);
-            }
-        }
-        Collections.sort(lifeForms);
-        for (LifeForm lifeForm : lifeForms) {
-            System.out.println(lifeForm.toString());
-        }
-        return lifeForms;
+        lifeForms = WebScrape.webScrape();
+        return WebScrape.webScrape();
     }
 
     public static List<LifeForm> getLifeForms() {
@@ -124,12 +111,11 @@ public class Repository {
 
     public void getWeakerStronger() {
         this.generateCharacters();
-        //int index = lifeForms.indexOf(user);
-        int index = 35;
+        int index = lifeForms.indexOf(user);
         if (index == 0) {
-            user.setStrongerFoe(lifeForms.get(0));
+            user.setStrongerFoe(lifeForms.get(1));
             user.setWeakerFoe(new LifeForm("Tardigrade", 0, "Goeze Saga"));
-        } else if (index == lifeForms.size()) {
+        } else if (index == lifeForms.size() - 1) {
             user.setStrongerFoe(new LifeForm("Polycephabrick", Double.POSITIVE_INFINITY, "Brick Boys"));
             user.setWeakerFoe(lifeForms.get(lifeForms.size() - 1));
         } else {

@@ -15,7 +15,7 @@ import com.example.scouter.entity.User;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
 public class ScouterDisplay extends AppCompatActivity {
-    private EditUserViewModel model;
+    private EditUserViewModel userViewModel;
 
     private TextView userName;
     private TextView powerLevel;
@@ -34,7 +34,7 @@ public class ScouterDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_powerlevel);
 
-        model = ViewModelProviders.of(this).get(EditUserViewModel.class);
+        userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
         userName = findViewById(R.id.name_field);
         powerLevel = findViewById(R.id.powerlevel);
@@ -44,17 +44,17 @@ public class ScouterDisplay extends AppCompatActivity {
         weakerScreen = findViewById(R.id.weakerButton);
         strongerScreen = findViewById(R.id.strongerButton);
 
-        String squatDisplay = "Squat: " + model.getUser().getSquat();
-        String benchDisplay = "Bench: " + model.getUser().getBench();
-        String deadliftDisplay = "Deadlift: " + model.getUser().getDeadlift();
+        String squatDisplay = "Squat: " + userViewModel.getUser().getSquat();
+        String benchDisplay = "Bench: " + userViewModel.getUser().getBench();
+        String deadliftDisplay = "Deadlift: " + userViewModel.getUser().getDeadlift();
 
-        userName.setText(model.getName());
-        powerLevel.setText(String.valueOf(model.getPowerLevel()));
+        userName.setText(userViewModel.getName());
+        powerLevel.setText(String.valueOf(userViewModel.getPowerLevel()));
         squatMax.setText(squatDisplay);
         benchMax.setText(benchDisplay);
         deadliftMax.setText(deadliftDisplay);
 
-        model.weakStrong();
+        userViewModel.weakStrong();
 
         weakerScreen.setOnClickListener(new View.OnClickListener() {
             @Override

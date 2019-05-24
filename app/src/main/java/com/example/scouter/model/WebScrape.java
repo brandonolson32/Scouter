@@ -21,6 +21,11 @@ import java.util.Map;
 
 public class WebScrape {
 
+    public static void main(String[] args) {
+//        Map<String, ArrayList<LifeForm>> scrapedMap = webScrape();
+        Repository.generateCharacters();
+    }
+
     public static Map<String, ArrayList<LifeForm>> webScrape() {
         Map<String, ArrayList<LifeForm>> motherOfData = new HashMap<>();
         final String url =

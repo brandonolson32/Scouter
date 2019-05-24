@@ -61,6 +61,6 @@ public class LifeForm implements Comparable<LifeForm> {
 
     @Override
     public String toString() {
-        return this.name + " " + powerLevel;
+        return this.saga + ": " + this.name + " - " + powerLevel;
     }
 }

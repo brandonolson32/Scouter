@@ -87,9 +87,9 @@ public class EditUserViewModel extends AndroidViewModel {
         interactor.setId(id);
     }
 
-    public void weakStrong() {
-        interactor.getComparableLifeForm();
-    }
+//    public void weakStrong() {
+//        interactor.getComparableLifeForm();
+//    }
 
     public LifeForm getWeaker() {
         return interactor.getWeakerFoe();

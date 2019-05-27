@@ -101,10 +101,10 @@ public class UserInteractor extends Interactor {
         repo.setUserName(name);
     }
 
-    public void getComparableLifeForm() {
-        repo = getRepo();
-        repo.getWeakerStronger();
-    }
+//    public void getComparableLifeForm() {
+//        repo = getRepo();
+//        repo.getWeakerStronger();
+//    }
 
     public LifeForm getWeakerFoe() {
         return user.getWeakerFoe();

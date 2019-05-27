@@ -1,17 +1,22 @@
 package com.example.scouter.model;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.os.AsyncTask;
 
 import com.example.scouter.entity.Character.Krillin;
 import com.example.scouter.entity.Character.LifeForm;
 import com.example.scouter.entity.User;
 import com.example.scouter.viewmodels.EditUserViewModel;
+import com.opencsv.CSVWriter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,14 +32,20 @@ import java.util.Map;
 public class WebScrape {
 
     public static void main(String[] args) {
-//        Map<String, ArrayList<LifeForm>> scrapedMap = webScrape();
-
-//        Repository.generateCharacters();
-
-        webScrape();
+//        List<LifeForm> lifeForms = webScrape();
+//        for (LifeForm lifeForm : lifeForms) {
+//            System.out.println(lifeForm.toString());
+//        }
+//        webScrape("/Users/brandonolson/cs2340/Scouter/app/" +
+//                "src/main/assets/DBZ_Database.csv");
+        Repository.generateCharacters();
     }
 
-    public static ArrayList<LifeForm> webScrape() {
+    public static void webScrape(String filePath) {
+
+        File file = new File(filePath);
+
+
         Map<String, ArrayList<LifeForm>> motherOfData = new HashMap<>();
         final String url =
                 "https://dragonball.fandom.com/wiki/List_of_Power_Levels";
@@ -50,11 +61,29 @@ public class WebScrape {
                     continue;
                 } else if (!data.get(0).hasText()) {
                     try {
-                        LifeForm newGuy = new LifeForm(data.get(1).text(),
-                                Double.parseDouble(data.get(2).text()
-                                        .replaceAll("[^-.0123456789]", "")));
+                        double powerLevelFinal = 0;
+                        if (data.get(2).text().indexOf("-") >= 0) {
+                            String powerLevelString = data.get(2).text()
+                                    .replaceAll("[^-.0123456789]", "");
+                            String[] powerLevelStringArr = powerLevelString.split("-");
+//                            System.out.println();
+                            double powerLevel1 = Double.parseDouble(powerLevelStringArr[0]);
+                            double powerLevel2 = Double.parseDouble(powerLevelStringArr[1]);
+                            powerLevelFinal = (powerLevel1 + powerLevel2)/2;
+                        } else {
+//                            if (data.get(2).hasText()) {
+                                if (data.get(2).text().equals("Unmeasurable")) {
+                                    powerLevelFinal = Double.MAX_VALUE;
+                                } else {
+                                    powerLevelFinal = Double.parseDouble(data.get(2).text()
+                                            .replaceAll("[^-.0123456789]", ""));
+                                }
+//                            }
+                        }
+                        LifeForm newGuy = new LifeForm(data.get(1).text(), powerLevelFinal);
                         motherOfData.get(saga).add(newGuy);
                     } catch (NumberFormatException e) {
+                        e.printStackTrace();
                     }
                 } else if (!data.get(1).hasText()) {
                     saga = data.get(0).text();
@@ -79,14 +108,12 @@ public class WebScrape {
 //             String value = motherOfData.get(s).toString();
 //             System.out.println(key + " " + value);
 //             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-
-
-
-        ArrayList<LifeForm> lifeForms = new ArrayList<>();
+        List <LifeForm> lifeForms = new ArrayList<>();
         for (String saga : motherOfData.keySet()) {
             for (LifeForm lf : motherOfData.get(saga)) {
                 LifeForm newLifeForm =
@@ -95,10 +122,35 @@ public class WebScrape {
             }
         }
         Collections.sort(lifeForms);
-        for (LifeForm lifeForm : lifeForms) {
-            System.out.println(lifeForm.toString());
+
+        try {
+            // create FileWriter object with file as parameter
+            FileWriter outputfile = new FileWriter(file);
+
+            // create CSVWriter object filewriter object as parameter
+            CSVWriter writer = new CSVWriter(outputfile);
+
+            // adding header to csv
+            String[] header = { "Saga", "Name", "Power Level" };
+            writer.writeNext(header);
+
+            // add data to csv
+            for (LifeForm lifeForm : lifeForms) {
+                String saga = lifeForm.getSaga();
+                String name = lifeForm.getName();
+                String powerLevel = String.valueOf(lifeForm.getPowerLevel());
+                String[] nextLine = { saga, name, powerLevel };
+                writer.writeNext(nextLine);
+            }
+
+            // closing writer connection
+            writer.close();
+        }
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
-        return lifeForms;
+//        return lifeForms;
     }
 }

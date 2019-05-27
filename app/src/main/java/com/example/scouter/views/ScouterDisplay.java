@@ -34,6 +34,8 @@ public class ScouterDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_powerlevel);
 
+
+
         userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
         userName = findViewById(R.id.name_field);
@@ -54,7 +56,7 @@ public class ScouterDisplay extends AppCompatActivity {
         benchMax.setText(benchDisplay);
         deadliftMax.setText(deadliftDisplay);
 
-        userViewModel.weakStrong();
+//        userViewModel.weakStrong();
 
         weakerScreen.setOnClickListener(new View.OnClickListener() {
             @Override

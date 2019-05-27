@@ -9,7 +9,9 @@ import com.example.scouter.entity.Character.MrPopo;
 import com.example.scouter.entity.Character.Nail;
 import com.example.scouter.entity.Character.Piccolo;
 import com.example.scouter.entity.User;
+import com.opencsv.CSVReader;
 
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,14 +24,14 @@ public class Repository {
 
     private static int next_id = 1;
     private User user;
-    private static List<LifeForm> lifeForms;
+    private static List<LifeForm> lifeForms = new ArrayList<>();
 
-    /**
-     * Make a new Repository object
-     */
-    public Repository() {
-        lifeForms = generateCharacters();
-    }
+//    /**
+//     * Make a new Repository object
+//     */
+//    public Repository() {
+//        lifeForms = generateCharacters();
+//    }
 
     /***
      * Generate unique numbers to be used as keys
@@ -42,9 +44,35 @@ public class Repository {
     /**
      * Stores characters in the array
      */
-    public static List<LifeForm> generateCharacters() {
-        lifeForms = WebScrape.webScrape();
-        return WebScrape.webScrape();
+    public static void generateCharacters() {
+        try {
+            // Create an object of filereader
+            // class with CSV file as a parameter.
+            FileReader filereader = new FileReader(
+                    "/Users/brandonolson/cs2340/Scouter/" +
+                            "app/src/main/assets/DBZ_Database.csv");
+
+            // create csvReader object passing
+            // file reader as a parameter
+            CSVReader csvReader = new CSVReader(filereader);
+            String[] nextLine;
+
+            // headers
+            csvReader.readNext();
+
+            // we are going to read data line by line
+            while ((nextLine = csvReader.readNext()) != null) {
+                String name = nextLine[1];
+                double powerLevel = Double.parseDouble(nextLine[2]);
+                String saga = nextLine[0];
+                LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
+                lifeForms.add(lifeForm);
+            }
+            Collections.sort(lifeForms);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static List<LifeForm> getLifeForms() {

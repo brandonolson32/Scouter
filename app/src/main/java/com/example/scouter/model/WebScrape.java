@@ -38,7 +38,7 @@ public class WebScrape {
 //        }
 //        webScrape("/Users/brandonolson/cs2340/Scouter/app/" +
 //                "src/main/assets/DBZ_Database.csv");
-        Repository.generateCharacters();
+//        Repository.generateCharacters();
     }
 
     public static void webScrape(String filePath) {
@@ -66,19 +66,16 @@ public class WebScrape {
                             String powerLevelString = data.get(2).text()
                                     .replaceAll("[^-.0123456789]", "");
                             String[] powerLevelStringArr = powerLevelString.split("-");
-//                            System.out.println();
                             double powerLevel1 = Double.parseDouble(powerLevelStringArr[0]);
                             double powerLevel2 = Double.parseDouble(powerLevelStringArr[1]);
                             powerLevelFinal = (powerLevel1 + powerLevel2)/2;
                         } else {
-//                            if (data.get(2).hasText()) {
-                                if (data.get(2).text().equals("Unmeasurable")) {
+                            if (data.get(2).text().equals("Unmeasurable")) {
                                     powerLevelFinal = Double.MAX_VALUE;
-                                } else {
-                                    powerLevelFinal = Double.parseDouble(data.get(2).text()
-                                            .replaceAll("[^-.0123456789]", ""));
-                                }
-//                            }
+                            } else {
+                                powerLevelFinal = Double.parseDouble(data.get(2).text()
+                                        .replaceAll("[^-.0123456789]", ""));
+                            }
                         }
                         LifeForm newGuy = new LifeForm(data.get(1).text(), powerLevelFinal);
                         motherOfData.get(saga).add(newGuy);

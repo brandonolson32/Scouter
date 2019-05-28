@@ -56,18 +56,20 @@ public class ScouterDisplay extends AppCompatActivity {
         benchMax.setText(benchDisplay);
         deadliftMax.setText(deadliftDisplay);
 
-//        userViewModel.weakStrong();
+        userViewModel.weakStrong();
 
         weakerScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this, WeakerCharacter.class));
+                ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this,
+                        WeakerCharacter.class));
             }
         });
         strongerScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this, StrongerCharacter.class));
+                ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this,
+                        StrongerCharacter.class));
             }
         });
     }

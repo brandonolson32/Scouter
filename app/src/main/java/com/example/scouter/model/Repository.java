@@ -11,11 +11,19 @@ import com.example.scouter.entity.Character.Piccolo;
 import com.example.scouter.entity.User;
 import com.opencsv.CSVReader;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.icu.text.DecimalFormat;
 
 /**
  * This class is an abstraction of the data storage for the business classes
@@ -26,12 +34,12 @@ public class Repository {
     private User user;
     private static List<LifeForm> lifeForms = new ArrayList<>();
 
-//    /**
-//     * Make a new Repository object
-//     */
-//    public Repository() {
-//        lifeForms = generateCharacters();
-//    }
+    /**
+     * Make a new Repository object
+     */
+    public Repository() {
+        generateCharacters();
+    }
 
     /***
      * Generate unique numbers to be used as keys
@@ -44,34 +52,79 @@ public class Repository {
     /**
      * Stores characters in the array
      */
-    public static void generateCharacters() {
-        try {
-            // Create an object of filereader
-            // class with CSV file as a parameter.
-            FileReader filereader = new FileReader(
-                    "/Users/brandonolson/cs2340/Scouter/" +
-                            "app/src/main/assets/DBZ_Database.csv");
+    public void generateCharacters() {
+//        try {
+//            // Create an object of filereader
+//            // class with CSV file as a parameter.
+//            FileReader filereader = new FileReader(
+//                    "DBZ_Database.csv");
+//
+//            // create csvReader object passing
+//            // file reader as a parameter
+//            CSVReader csvReader = new CSVReader(filereader);
+//            String[] nextLine;
+//
+//            // headers
+//            csvReader.readNext();
+//
+//            // we are going to read data line by line
+//            while ((nextLine = csvReader.readNext()) != null) {
+//                String name = nextLine[1];
+//                double powerLevel = Double.parseDouble(nextLine[2]);
+//                String saga = nextLine[0];
+//                LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
+//                lifeForms.add(lifeForm);
+//            }
+//            Collections.sort(lifeForms);
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-            // create csvReader object passing
-            // file reader as a parameter
-            CSVReader csvReader = new CSVReader(filereader);
-            String[] nextLine;
+        String file = "assets/DBZ_Database.csv";
+        InputStream in = getClass().getClassLoader()
+                .getResourceAsStream(file);
+
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new InputStreamReader(in));
 
             // headers
-            csvReader.readNext();
+            reader.readLine();
+            // do reading, usually loop until end of file reading
+            String nextLine;
+            while ((nextLine = reader.readLine()) != null) {
+//                String line = nextLine.trim("");
+                String[] lineArr = nextLine.split(",");
+//                System.out.println(lineArr[2]);
 
-            // we are going to read data line by line
-            while ((nextLine = csvReader.readNext()) != null) {
-                String name = nextLine[1];
-                double powerLevel = Double.parseDouble(nextLine[2]);
-                String saga = nextLine[0];
+                String name = lineArr[1];
+                double powerLevel = 0;
+
+                try {
+                    powerLevel = DecimalFormat.getNumberInstance()
+                            .parse(lineArr[2]).doubleValue();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                double powerLevel = Double.parseDouble(lineArr[2]);
+                String saga = lineArr[0];
                 LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
                 lifeForms.add(lifeForm);
+                System.out.println(lifeForm.toString());
             }
             Collections.sort(lifeForms);
-        }
-        catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -138,7 +191,10 @@ public class Repository {
     }
 
     public void getWeakerStronger() {
-        this.generateCharacters();
+        generateCharacters();
+        for (LifeForm lifeForm : lifeForms) {
+            System.out.println(lifeForm.toString());
+        }
         int index = lifeForms.indexOf(user);
         if (index == 0) {
             user.setStrongerFoe(lifeForms.get(1));

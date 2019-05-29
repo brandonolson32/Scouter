@@ -2,16 +2,12 @@ package com.example.scouter.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.MutableLiveData;
-import android.graphics.ColorSpace;
 import android.support.annotation.NonNull;
 
-import com.example.scouter.entity.Character.LifeForm;
+import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
 import com.example.scouter.model.Model;
 import com.example.scouter.model.UserInteractor;
-
-import java.util.List;
 
 /**
  * Class used to edit the User

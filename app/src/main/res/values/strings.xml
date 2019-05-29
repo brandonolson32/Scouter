@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Scouter</string>
-    <string name="weakerButtonLabel">Guy Below You</string>
-    <string name="restartText">home</string>
-    <string name="next_challenge">Next Challenge</string>
+
+    <string name="nameField">Name</string>
+    <string name="squatMaxField">Squat Max</string>
+    <string name="benchMaxField">Bench Max</string>
+    <string name="deadliftMaxField">Deadlift Max</string>
+    <string name="computeButton">Compute</string>
+
+
+    <string name="weakerChallengerButton">Weaker Challenger</string>
+    <string name="strongerChallengerButton">Stronger Challenger</string>
+    <string name="scouterDisplayButton">Scouter Display</string>
+    <string name="userInfo">User Name - Power Level</string>
+    <string name="characterInfo">Saga: Character Name - Power Level</string>
 </resources>

@@ -1,10 +1,10 @@
-package com.example.scouter.entity.Character;
+package com.example.scouter.entity;
 
 public class LifeForm implements Comparable<LifeForm> {
 
     protected String name;
     private double powerLevel;
-    private String saga = "";
+    private String saga;
 
     public LifeForm(String name, double powerLevel) {
         this.name = name;
@@ -64,6 +64,9 @@ public class LifeForm implements Comparable<LifeForm> {
 
     @Override
     public String toString() {
+        if (saga == null || saga.equals("")) {
+            return this.name + " - " + powerLevel;
+        }
         return this.saga + ": " + this.name + " - " + powerLevel;
     }
 }

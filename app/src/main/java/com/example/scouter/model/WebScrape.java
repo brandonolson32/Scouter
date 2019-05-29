@@ -1,12 +1,6 @@
 package com.example.scouter.model;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.os.AsyncTask;
-
-import com.example.scouter.entity.Character.Krillin;
-import com.example.scouter.entity.Character.LifeForm;
-import com.example.scouter.entity.User;
-import com.example.scouter.viewmodels.EditUserViewModel;
+import com.example.scouter.entity.LifeForm;
 import com.opencsv.CSVWriter;
 
 import org.jsoup.Jsoup;
@@ -17,7 +11,6 @@ import org.jsoup.select.Elements;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;

@@ -19,8 +19,8 @@ public class ScouterDisplay extends AppCompatActivity {
     private TextView squatMax;
     private TextView benchMax;
     private TextView deadliftMax;
-    private Button weakerCharacterButton_1;
-    private Button strongerCharacterButton_1;
+    private Button weakerCharacterButton;
+    private Button strongerCharacterButton;
 
     @Override
     /*
@@ -40,8 +40,8 @@ public class ScouterDisplay extends AppCompatActivity {
         squatMax = findViewById(R.id.squat_max_field);
         benchMax = findViewById(R.id.bench_max_field);
         deadliftMax = findViewById(R.id.deadlift_max_field);
-        weakerCharacterButton_1 = findViewById(R.id.weaker_character_button_1);
-        strongerCharacterButton_1 = findViewById(R.id.stronger_character_button_1);
+        weakerCharacterButton = findViewById(R.id.weaker_character_button_1);
+        strongerCharacterButton = findViewById(R.id.stronger_character_button_1);
 
         String squatDisplay = "Squat: " + userViewModel.getUser().getSquat();
         String benchDisplay = "Bench: " + userViewModel.getUser().getBench();
@@ -55,18 +55,18 @@ public class ScouterDisplay extends AppCompatActivity {
 
         userViewModel.weakStrong();
 
-        weakerCharacterButton_1.setOnClickListener(new View.OnClickListener() {
+        weakerCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this,
-                        WeakerCharacter.class));
+                        WeakerOrStrongerCharacter.class));
             }
         });
-        strongerCharacterButton_1.setOnClickListener(new View.OnClickListener() {
+        strongerCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this,
-                        StrongerCharacter.class));
+                        WeakerOrStrongerCharacter.class));
             }
         });
     }

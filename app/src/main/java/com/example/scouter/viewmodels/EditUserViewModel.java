@@ -9,6 +9,8 @@ import com.example.scouter.entity.User;
 import com.example.scouter.model.Model;
 import com.example.scouter.model.UserInteractor;
 
+import java.util.List;
+
 /**
  * Class used to edit the User
  */
@@ -87,11 +89,11 @@ public class EditUserViewModel extends AndroidViewModel {
         interactor.getComparableLifeForm();
     }
 
-    public LifeForm getWeaker() {
-        return interactor.getWeakerFoe();
+    public List<LifeForm> getWeakerAndStronger() {
+        return interactor.getWeakerAndStrongerFoes();
     }
 
-    public LifeForm getStronger() {
-        return interactor.getStrongerFoe();
-    }
+//    public LifeForm getStronger() {
+//        return interactor.getStrongerFoe();
+//    }
 }

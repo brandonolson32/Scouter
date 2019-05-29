@@ -5,6 +5,9 @@ import android.util.Log;
 import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class is the interactor for the User
  */
@@ -101,11 +104,11 @@ public class UserInteractor extends Interactor {
         repo.getWeakerStronger();
     }
 
-    public LifeForm getWeakerFoe() {
-        return user.getWeakerFoe();
+    public List<LifeForm> getWeakerAndStrongerFoes() {
+        return user.getWeakerAndStrongerFoes();
     }
 
-    public LifeForm getStrongerFoe() {
-        return user.getStrongerFoe();
-    }
+//    public LifeForm getStrongerFoe() {
+//        return user.getStrongerFoe();
+//    }
 }

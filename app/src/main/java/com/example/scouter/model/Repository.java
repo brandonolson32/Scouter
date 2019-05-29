@@ -41,33 +41,6 @@ public class Repository {
      * Stores characters in the array
      */
     public void generateCharacters() {
-//        try {
-//            // Create an object of filereader
-//            // class with CSV file as a parameter.
-//            FileReader filereader = new FileReader(
-//                    "DBZ_Database.csv");
-//
-//            // create csvReader object passing
-//            // file reader as a parameter
-//            CSVReader csvReader = new CSVReader(filereader);
-//            String[] nextLine;
-//
-//            // headers
-//            csvReader.readNext();
-//
-//            // we are going to read data line by line
-//            while ((nextLine = csvReader.readNext()) != null) {
-//                String name = nextLine[1];
-//                double powerLevel = Double.parseDouble(nextLine[2]);
-//                String saga = nextLine[0];
-//                LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
-//                lifeForms.add(lifeForm);
-//            }
-//            Collections.sort(lifeForms);
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
         String file = "assets/DBZ_Database.csv";
         InputStream in = getClass().getClassLoader()
@@ -180,19 +153,21 @@ public class Repository {
 
     public void getWeakerStronger() {
         generateCharacters();
-        for (LifeForm lifeForm : lifeForms) {
-            System.out.println(lifeForm.toString());
-        }
+//        for (LifeForm lifeForm : lifeForms) {
+//            System.out.println(lifeForm.toString());
+//        }
+        List<LifeForm> weakerAndStrongerLifeForms = new ArrayList<>();
         int index = lifeForms.indexOf(user);
         if (index == 0) {
-            user.setStrongerFoe(lifeForms.get(1));
-            user.setWeakerFoe(new LifeForm("Tardigrade", 0, "Goeze Saga"));
+            weakerAndStrongerLifeForms.add(new LifeForm("Tardigrade", 0, "Goeze Saga"));
+            weakerAndStrongerLifeForms.add(lifeForms.get(1));
         } else if (index == lifeForms.size() - 1) {
-            user.setStrongerFoe(new LifeForm("Polycephabrick", Double.POSITIVE_INFINITY, "Brick Boys"));
-            user.setWeakerFoe(lifeForms.get(lifeForms.size() - 1));
+            weakerAndStrongerLifeForms.add(lifeForms.get(lifeForms.size() - 1));
+            weakerAndStrongerLifeForms.add(new LifeForm("Polycephabrick", Double.POSITIVE_INFINITY, "Brick Boys"));
         } else {
-            user.setStrongerFoe(lifeForms.get(index + 1));
-            user.setWeakerFoe(lifeForms.get(index - 1));
+            weakerAndStrongerLifeForms.add(lifeForms.get(index - 1));
+            weakerAndStrongerLifeForms.add(lifeForms.get(index + 1));
         }
+        user.setWeakerAndStrongerFoes(weakerAndStrongerLifeForms);
     }
 }

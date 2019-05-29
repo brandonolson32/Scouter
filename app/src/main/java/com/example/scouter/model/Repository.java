@@ -1,28 +1,16 @@
 package com.example.scouter.model;
 
-import com.example.scouter.entity.Character.Farmer;
-import com.example.scouter.entity.Character.Frieza;
-import com.example.scouter.entity.Character.Goku;
-import com.example.scouter.entity.Character.Krillin;
-import com.example.scouter.entity.Character.LifeForm;
-import com.example.scouter.entity.Character.MrPopo;
-import com.example.scouter.entity.Character.Nail;
-import com.example.scouter.entity.Character.Piccolo;
+import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
-import com.opencsv.CSVReader;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.icu.text.DecimalFormat;
 
 /**
@@ -95,8 +83,8 @@ public class Repository {
             // do reading, usually loop until end of file reading
             String nextLine;
             while ((nextLine = reader.readLine()) != null) {
-//                String line = nextLine.trim("");
-                String[] lineArr = nextLine.split(",");
+                String line = nextLine.replace("\"", "");
+                String[] lineArr = line.split(",");
 //                System.out.println(lineArr[2]);
 
                 String name = lineArr[1];

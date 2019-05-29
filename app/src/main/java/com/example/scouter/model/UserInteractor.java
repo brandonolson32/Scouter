@@ -2,13 +2,8 @@ package com.example.scouter.model;
 
 import android.util.Log;
 
-import com.example.scouter.entity.Character.LifeForm;
+import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.example.scouter.model.Repository.getLifeForms;
 
 /**
  * This class is the interactor for the User

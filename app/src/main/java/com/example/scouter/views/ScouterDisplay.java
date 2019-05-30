@@ -2,6 +2,7 @@ package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -45,12 +46,17 @@ public class ScouterDisplay extends AppCompatActivity {
         strongerCharacterButton = findViewById(R.id.stronger_character_button);
         homeButton = findViewById(R.id.home);
 
-        String squatDisplay = "Squat: " + userViewModel.getUser().getSquat();
-        String benchDisplay = "Bench: " + userViewModel.getUser().getBench();
-        String deadliftDisplay = "Deadlift: " + userViewModel.getUser().getDeadlift();
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+
+        String squatDisplay = "Squat: " + formatter.format(
+                userViewModel.getUser().getSquat());
+        String benchDisplay = "Bench: " + formatter.format(
+                userViewModel.getUser().getBench());
+        String deadliftDisplay = "Deadlift: " + formatter.format(
+                userViewModel.getUser().getDeadlift());
 
         userName.setText(userViewModel.getName());
-        powerLevel.setText(String.valueOf(userViewModel.getPowerLevel()));
+        powerLevel.setText(formatter.format(userViewModel.getPowerLevel()));
         squatMax.setText(squatDisplay);
         benchMax.setText(benchDisplay);
         deadliftMax.setText(deadliftDisplay);

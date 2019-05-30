@@ -23,7 +23,7 @@
         tools:text="@string/characterInfo" />
 
     <Button
-        android:id="@+id/stronger_challenger_button_2"
+        android:id="@+id/weaker_or_stronger_challenger_button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

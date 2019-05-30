@@ -58,15 +58,19 @@ public class ScouterDisplay extends AppCompatActivity {
         weakerCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this,
-                        WeakerOrStrongerCharacter.class));
+                Intent myIntent = new Intent(ScouterDisplay.this,
+                        WeakerOrStrongerCharacter.class);
+                myIntent.putExtra("indexOfLifeForm", 0);
+                ScouterDisplay.this.startActivity(myIntent);
             }
         });
         strongerCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this,
-                        WeakerOrStrongerCharacter.class));
+                Intent myIntent = new Intent(ScouterDisplay.this,
+                        WeakerOrStrongerCharacter.class);
+                myIntent.putExtra("indexOfLifeForm", 1);
+                ScouterDisplay.this.startActivity(myIntent);
             }
         });
     }

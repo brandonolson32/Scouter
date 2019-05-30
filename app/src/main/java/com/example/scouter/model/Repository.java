@@ -58,7 +58,6 @@ public class Repository {
             while ((nextLine = reader.readLine()) != null) {
                 String line = nextLine.replace("\"", "");
                 String[] lineArr = line.split(",");
-//                System.out.println(lineArr[2]);
 
                 String name = lineArr[1];
                 double powerLevel = 0;
@@ -69,11 +68,10 @@ public class Repository {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-//                double powerLevel = Double.parseDouble(lineArr[2]);
                 String saga = lineArr[0];
                 LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
                 lifeForms.add(lifeForm);
-                System.out.println(lifeForm.toString());
+//                System.out.println(lifeForm.toString());
             }
             Collections.sort(lifeForms);
         } catch (IOException e) {
@@ -153,9 +151,6 @@ public class Repository {
 
     public void getWeakerStronger() {
         generateCharacters();
-//        for (LifeForm lifeForm : lifeForms) {
-//            System.out.println(lifeForm.toString());
-//        }
         List<LifeForm> weakerAndStrongerLifeForms = new ArrayList<>();
         int index = lifeForms.indexOf(user);
         if (index == 0) {

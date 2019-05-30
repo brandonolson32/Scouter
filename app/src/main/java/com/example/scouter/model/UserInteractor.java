@@ -4,8 +4,6 @@ import android.util.Log;
 
 import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -107,8 +105,4 @@ public class UserInteractor extends Interactor {
     public List<LifeForm> getWeakerAndStrongerFoes() {
         return user.getWeakerAndStrongerFoes();
     }
-
-//    public LifeForm getStrongerFoe() {
-//        return user.getStrongerFoe();
-//    }
 }

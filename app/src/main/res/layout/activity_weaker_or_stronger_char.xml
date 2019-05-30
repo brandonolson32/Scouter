@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/character_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_width="324dp"
+        android:layout_height="67dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="16dp"
         android:gravity="center"
         android:textColor="#A4A72727"
         android:textSize="24sp"
@@ -25,16 +25,15 @@
     <Button
         android:id="@+id/weaker_or_stronger_challenger_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/strongerChallengerButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/middle"
+        app:layout_constraintStart_toEndOf="@+id/scouter_display_button_1"
         app:layout_constraintTop_toTopOf="@+id/scouter_display_button_1" />
 
     <Button
@@ -49,7 +48,6 @@
         android:layout_marginRight="8dp"
         android:text="@string/scouterDisplayButton"
         app:layout_constraintEnd_toStartOf="@+id/middle"
-        app:layout_constraintHorizontal_bias="0.822"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/character_info" />
 

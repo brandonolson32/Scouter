@@ -21,6 +21,7 @@ public class ScouterDisplay extends AppCompatActivity {
     private TextView deadliftMax;
     private Button weakerCharacterButton;
     private Button strongerCharacterButton;
+    private Button homeButton;
 
     @Override
     /*
@@ -40,8 +41,9 @@ public class ScouterDisplay extends AppCompatActivity {
         squatMax = findViewById(R.id.squat_max_field);
         benchMax = findViewById(R.id.bench_max_field);
         deadliftMax = findViewById(R.id.deadlift_max_field);
-        weakerCharacterButton = findViewById(R.id.weaker_character_button_1);
-        strongerCharacterButton = findViewById(R.id.stronger_character_button_1);
+        weakerCharacterButton = findViewById(R.id.weaker_character_button);
+        strongerCharacterButton = findViewById(R.id.stronger_character_button);
+        homeButton = findViewById(R.id.home);
 
         String squatDisplay = "Squat: " + userViewModel.getUser().getSquat();
         String benchDisplay = "Bench: " + userViewModel.getUser().getBench();
@@ -71,6 +73,13 @@ public class ScouterDisplay extends AppCompatActivity {
                         WeakerOrStrongerCharacter.class);
                 myIntent.putExtra("indexOfLifeForm", 1);
                 ScouterDisplay.this.startActivity(myIntent);
+            }
+        });
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ScouterDisplay.this.startActivity(new Intent(ScouterDisplay.this,
+                        UserCreation.class));
             }
         });
     }

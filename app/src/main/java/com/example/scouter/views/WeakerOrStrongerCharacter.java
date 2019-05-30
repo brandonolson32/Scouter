@@ -67,11 +67,12 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         ImageView dbzImage = findViewById(R.id.dbz_image);
         if (displayedCharacter.getName().equals("Turtle")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Training)")) {
-//            int id = R.drawable. ;
-//            dbzImage.setImageResource(id);
+            int id = R.drawable.turtle_vegeta_saga_training;
+            dbzImage.setImageResource(id);
         } else if (displayedCharacter.getName().equals("Gohan (Normal)")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
-
+            int id = R.drawable.gohan_normal_raditz_saga;
+            dbzImage.setImageResource(id);
 
         } else if (displayedCharacter.getName().equals("Future Trunks (suppressed)")
                 && displayedCharacter.getSaga().equals("Trunks Saga")) {

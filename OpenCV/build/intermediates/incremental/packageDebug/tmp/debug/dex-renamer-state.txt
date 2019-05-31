@@ -1,4 +1,4 @@
-#Sat May 25 17:29:17 EDT 2019
-base.0=/Users/brandonolson/cs2340/Scouter/OpenCV/build/intermediates/dex/debug/mergeDexDebug/out
+#Fri May 31 19:23:03 EDT 2019
+base.0=C\:\\Users\\jctal\\Desktop\\Scouter\\OpenCV\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
 path.0=classes.dex
 renamed.0=classes.dex

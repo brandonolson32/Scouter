@@ -1,7 +1,9 @@
 package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +22,8 @@ import java.util.List;
 
 public class WeakerOrStrongerCharacter extends AppCompatActivity {
     private EditUserViewModel userViewModel;
+
+    private Context context = WeakerOrStrongerCharacter.this;
 
     private LifeForm user;
     private LifeForm displayedCharacter;
@@ -55,7 +59,8 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         scouterDisplayButton = findViewById(R.id.scouter_display_button_1);
         otherCharacterButton = findViewById(R.id.weaker_or_stronger_challenger_button);
 
-        Button otherCharacterButton = (Button) findViewById(
+
+        Button otherCharacterButton = findViewById(
                 R.id.weaker_or_stronger_challenger_button);
         if (indexOfLifeForm == 0) {
             otherCharacterButton.setText("Stronger Challenger");
@@ -67,27 +72,15 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         characterInfoTextView.setText(displayedCharacter.toString());
 
         ImageView dbzImage = findViewById(R.id.dbz_image);
-        if (displayedCharacter.getName().equals("Turtle")
-                && displayedCharacter.getSaga().equals("Vegeta Saga (Training)")) {
-            Glide.with(this).load(R.drawable.turtle_vegeta_saga_training)
-                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                    .into(dbzImage);
-        } else if (displayedCharacter.getName().equals("Gohan (Normal)")
-                && displayedCharacter.getSaga().equals("Raditz Saga")) {
-            int id = R.drawable.gohan_normal_raditz_saga;
-            dbzImage.setImageResource(id);
+        Resources resources = this.getResources();
+        final int imageID = resources.getIdentifier(displayedCharacter.imageName(), "drawable",
+                this.getPackageName());
 
-        } else if (displayedCharacter.getName().equals("Future Trunks (suppressed)")
-                && displayedCharacter.getSaga().equals("Trunks Saga")) {
-            Glide.with(this).load(R.drawable.future_trunks_supressed)
-                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                    .into(dbzImage);
-        } else if (displayedCharacter.getName().equals("Farmer")
-                && displayedCharacter.getSaga().equals("Raditz Saga")) {
-            Glide.with(this).load(R.drawable.farmer_raditz_saga)
-                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                    .into(dbzImage);
-        } else if (displayedCharacter.getName().equals("Dr. Kochin")
+        Glide.with(context).load(imageID).into(dbzImage);
+
+
+
+        if (displayedCharacter.getName().equals("Dr. Kochin")
                 && displayedCharacter.getSaga().equals("The World's Strongest")) {
 
 
@@ -380,10 +373,6 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
 
 
-        } else if (displayedCharacter.getName().equals("Tien Shinhan")
-                && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-            int id = R.drawable.tien_shinhan_vegeta_saga_saiyan_invasion;
-            dbzImage.setImageResource(id);
         } else if (displayedCharacter.getName().equals("Gohan (Masenko)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
             int id = R.drawable.gohan_masenko_vegeta_saga_saiyan_invasion;
@@ -705,20 +694,6 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         } else if (displayedCharacter.getName().equals("Broly (Legendary Super Saiyan)")
                 && displayedCharacter.getSaga().equals("Broly - The Legendary Super Saiyan")) {
             Glide.with(this).load(R.drawable.broly_dbs)
-                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                    .into(dbzImage);
-        } else if (displayedCharacter.getName().equals("Super Gogeta")
-                && displayedCharacter.getSaga().equals("Fusion Reborn")) {
-
-
-        } else if (displayedCharacter.getName().equals("Frieza (Final Form)")
-                && displayedCharacter.getSaga().equals("The Real 4-D")) {
-            Glide.with(this).load(R.drawable.frieza_final_form_the_real_4_d)
-                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                    .into(dbzImage);
-        } else if (displayedCharacter.getName().equals("Broly (DBS)")
-                && displayedCharacter.getSaga().equals("Broly")) {
-            Glide.with(this).load(R.drawable.broly_legendary_super_saiyan)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         }

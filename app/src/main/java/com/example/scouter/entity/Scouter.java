@@ -4,7 +4,13 @@ import static java.lang.Math.pow;
 /**
  * This class is a service provider that computes the User's powerLevel
  */
+
 public class Scouter {
+
+    public static void main(String[] args) {
+        System.out.println(computePowerLevel(1000000, 1000000, 1000000));
+    }
+
     public static int computePowerLevel(int squat, int bench, int deadlift) {
         if (squat < 0 || bench < 0 || deadlift < 0) {
             return -1;

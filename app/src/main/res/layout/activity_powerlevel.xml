@@ -12,15 +12,15 @@
         android:id="@+id/leftCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.1595"
-        android:orientation="vertical"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.16" />
 
     <android.support.constraint.Guideline
         android:id="@+id/rightCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.52" />
 
     <android.support.constraint.Guideline
         android:id="@+id/topCircle"
@@ -40,15 +40,15 @@
         android:id="@+id/line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.3905"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
     <android.support.constraint.Guideline
         android:id="@+id/leftLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.7155"
-        android:orientation="vertical"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
 
     <android.support.constraint.Guideline
         android:id="@+id/buttonLineHz"
@@ -80,21 +80,31 @@
 
     <TextView
         android:id="@+id/powerlevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/leftLine"
-        android:layout_alignBottom="@id/line"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="1dp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:paddingRight="8dp"
         android:textColor="#1CDBEC"
         android:textSize="15sp"
         android:textStyle="bold"
         app:fontFamily="@font/press_start_2p"
         app:layout_constraintBottom_toTopOf="@+id/line"
-        app:layout_constraintLeft_toRightOf="@+id/leftLine" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/leftLine"
+        app:layout_constraintTop_toTopOf="@+id/bottomCircle"
+        tools:text="#,###" />
 
     <TextView
         android:id="@+id/squat_max_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeStepGranularity="2sp"
         android:layout_alignLeft="@id/leftCircle"
         android:textAllCaps="false"
         android:textColor="#FFD400"
@@ -103,12 +113,17 @@
         app:fontFamily="@font/caesar_dressing"
         app:layout_constraintLeft_toRightOf="@+id/leftCircle"
         app:layout_constraintRight_toLeftOf="@+id/rightCircle"
-        app:layout_constraintTop_toBottomOf="@id/name_field" />
+        app:layout_constraintTop_toBottomOf="@id/name_field"
+        tools:text="Squat: ###,###,###" />
 
     <TextView
         android:id="@+id/bench_max_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeStepGranularity="2sp"
         android:layout_alignLeft="@id/leftCircle"
         android:layout_alignTop="@id/squat_max_field"
         android:textColor="#FFD400"
@@ -117,12 +132,17 @@
         app:fontFamily="@font/caesar_dressing"
         app:layout_constraintLeft_toRightOf="@+id/leftCircle"
         app:layout_constraintRight_toLeftOf="@+id/rightCircle"
-        app:layout_constraintTop_toBottomOf="@+id/squat_max_field" />
+        app:layout_constraintTop_toBottomOf="@+id/squat_max_field"
+        tools:text="Bench: ###,###,###" />
 
     <TextView
         android:id="@+id/deadlift_max_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeStepGranularity="2sp"
         android:layout_alignLeft="@id/leftCircle"
         android:layout_alignTop="@id/bench_max_field"
         android:textColor="#FFD400"
@@ -131,34 +151,48 @@
         app:fontFamily="@font/caesar_dressing"
         app:layout_constraintLeft_toRightOf="@+id/leftCircle"
         app:layout_constraintRight_toLeftOf="@+id/rightCircle"
-        app:layout_constraintTop_toBottomOf="@+id/bench_max_field" />
+        app:layout_constraintTop_toBottomOf="@+id/bench_max_field"
+        tools:text="Deadlift: ###,###,###" />
 
     <Button
         android:id="@+id/weaker_character_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:soundEffectsEnabled="true"
         android:text="@string/weakerChallengerButton"
         android:textSize="12sp"
+        app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintLeft_toRightOf="@+id/leftCircle"
-        app:layout_constraintRight_toLeftOf="@+id/stronger_character_button"
+        app:layout_constraintEnd_toStartOf="@+id/rightCircle"
+        app:layout_constraintStart_toStartOf="@+id/leftCircle"
         app:layout_constraintTop_toTopOf="@+id/buttonLineHz" />
 
     <Button
         android:id="@+id/stronger_character_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:soundEffectsEnabled="true"
         android:text="@string/strongerChallengerButton"
         android:textSize="12sp"
+        app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintLeft_toRightOf="@+id/weaker_character_button"
-        app:layout_constraintRight_toLeftOf="@+id/buttonLineVr"
+        app:layout_constraintEnd_toStartOf="@+id/buttonLineVr"
+        app:layout_constraintStart_toStartOf="@+id/rightCircle"
         app:layout_constraintTop_toTopOf="@+id/buttonLineHz" />
 
     <Button
@@ -171,9 +205,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#2196F3"
-        android:text="Home"
+        android:singleLine="true"
+        android:soundEffectsEnabled="true"
+        android:text="@string/homeButton"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
+        app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"

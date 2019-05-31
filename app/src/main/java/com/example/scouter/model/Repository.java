@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import android.icu.text.DecimalFormat;
@@ -41,6 +42,8 @@ public class Repository {
      * Stores characters in the array
      */
     public void generateCharacters() {
+
+//        lifeForms.clear();
 
         String file = "assets/DBZ_Database.csv";
         InputStream in = getClass().getClassLoader()
@@ -99,6 +102,13 @@ public class Repository {
     }
 
     public void addUser(User user) {
+
+        for (Iterator<LifeForm> iterator = lifeForms.iterator(); iterator.hasNext();) {
+            LifeForm lifeForm = iterator.next();
+            if(lifeForm instanceof User) {
+                iterator.remove();
+            }
+        }
         int id = Repository.getNextUniqueID();
         user.setId(id);
         lifeForms.add(user);

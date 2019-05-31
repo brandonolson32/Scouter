@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -42,6 +43,21 @@ public class ScouterDisplay extends AppCompatActivity {
         squatMax = findViewById(R.id.squat_max_field);
         benchMax = findViewById(R.id.bench_max_field);
         deadliftMax = findViewById(R.id.deadlift_max_field);
+
+        powerLevel.setAutoSizeTextTypeUniformWithConfiguration(
+                1, 17, 1,
+                TypedValue.COMPLEX_UNIT_DIP);
+        squatMax.setAutoSizeTextTypeUniformWithConfiguration(
+                1, 17, 1,
+                    TypedValue.COMPLEX_UNIT_DIP);
+        benchMax.setAutoSizeTextTypeUniformWithConfiguration(
+                1, 17, 1,
+                TypedValue.COMPLEX_UNIT_DIP);
+        deadliftMax.setAutoSizeTextTypeUniformWithConfiguration(
+                1, 17, 1,
+                TypedValue.COMPLEX_UNIT_DIP);
+
+
         weakerCharacterButton = findViewById(R.id.weaker_character_button);
         strongerCharacterButton = findViewById(R.id.stronger_character_button);
         homeButton = findViewById(R.id.home);
@@ -56,7 +72,15 @@ public class ScouterDisplay extends AppCompatActivity {
                 userViewModel.getUser().getDeadlift());
 
         userName.setText(userViewModel.getName());
-        powerLevel.setText(formatter.format(userViewModel.getPowerLevel()));
+
+        System.out.println(userViewModel.getPowerLevel());
+
+        if (userViewModel.getPowerLevel() < 1000000) {
+            powerLevel.setText(formatter.format(userViewModel.getPowerLevel()));
+        } else {
+            formatter = new DecimalFormat("0.###E0");
+            powerLevel.setText(String.valueOf(formatter.format(userViewModel.getPowerLevel())));
+        }
         squatMax.setText(squatDisplay);
         benchMax.setText(benchDisplay);
         deadliftMax.setText(deadliftDisplay);

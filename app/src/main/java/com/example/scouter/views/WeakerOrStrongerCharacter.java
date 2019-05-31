@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.scouter.R;
 import com.example.scouter.entity.LifeForm;
 import com.example.scouter.viewmodels.EditUserViewModel;
@@ -67,8 +69,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         ImageView dbzImage = findViewById(R.id.dbz_image);
         if (displayedCharacter.getName().equals("Turtle")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Training)")) {
-            int id = R.drawable.turtle_vegeta_saga_training;
-            dbzImage.setImageResource(id);
+            Glide.with(this).load(R.drawable.turtle_vegeta_saga_training)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Gohan (Normal)")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
             int id = R.drawable.gohan_normal_raditz_saga;
@@ -76,12 +79,14 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Future Trunks (suppressed)")
                 && displayedCharacter.getSaga().equals("Trunks Saga")) {
-
-
+            Glide.with(this).load(R.drawable.future_trunks_supressed)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Farmer")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
-
-
+            Glide.with(this).load(R.drawable.farmer_raditz_saga)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Dr. Kochin")
                 && displayedCharacter.getSaga().equals("The World's Strongest")) {
 
@@ -148,8 +153,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Tien Shinhan Saga")) {
-
-
+            Glide.with(this).load(R.drawable.master_roshi_tien_shinhan_saga)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Training)")) {
 
@@ -264,12 +270,14 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
-
-
+            Glide.with(this).load(R.drawable.goku_raditz_saga)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Chiaotzu")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-
-
+            Glide.with(this).load(R.drawable.chiaotzu_vegeta_saga_saiyan_invasion)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Gohan")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
 
@@ -336,8 +344,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Piccolo (Special Beam Cannon #1)")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
-
-
+            Glide.with(this).load(R.drawable.special_beam_cannon_1)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Garlic Jr.")
                 && displayedCharacter.getSaga().equals("Dead Zone")) {
 
@@ -348,8 +357,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Piccolo (Special Beam Cannon #2)")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
-
-
+            Glide.with(this).load(R.drawable.special_bean_cannon_2)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Krillin (vs. Frieza's soldiers)")
                 && displayedCharacter.getSaga().equals("Namek Saga")) {
 
@@ -496,8 +506,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Bardock")
                 && displayedCharacter.getSaga().equals("Bardock - The Father of Goku")) {
-
-
+            Glide.with(this).load(R.drawable.bardock_the_father_of_goku)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Cacao")
                 && displayedCharacter.getSaga().equals("The Tree of Might")) {
 
@@ -512,8 +523,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x2 Kaioken)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-
-
+            Glide.with(this).load(R.drawable.goku_x2_kaioken_vegeta_saga)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Vegeta")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
 
@@ -556,8 +568,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x3 Kaioken)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-
-
+            Glide.with(this).load(R.drawable.goku_x3_kaioken_vegeta_saga)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Goku")
                 && displayedCharacter.getSaga().equals("The Tree of Might")) {
 
@@ -572,8 +585,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x4 Kaioken)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-
-
+            Glide.with(this).load(R.drawable.goku_x4_kaioken_vegeta_saga)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Dr. Wheelo")
                 && displayedCharacter.getSaga().equals("The World's Strongest")) {
 
@@ -636,8 +650,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x10 Kaioken)")
                 && displayedCharacter.getSaga().equals("The Tree of Might")) {
-
-
+            Glide.with(this).load(R.drawable.goku_x10_kaioken_the_tree_of_might)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Turles")
                 && displayedCharacter.getSaga().equals("The Tree of Might")) {
 
@@ -676,28 +691,36 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (Super Saiyan)")
                 && displayedCharacter.getSaga().equals("Frieza Saga")) {
+//            Glide.with(this).load("https://66.media.tumblr.com/4e327afb4ba85a5c4fb496da7d8cbc5e/tumblr_mlaywvLCiZ1qlkrb8o1_500.gif").asGif().into(dbzImage);
 
+            Glide.with(this).load(R.drawable.goku_super_saiyan_frieza_saga)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
 
         } else if (displayedCharacter.getName().equals("Cooler (fifth form)")
                 && displayedCharacter.getSaga().equals("Cooler's Revenge")) {
-
-
+            Glide.with(this).load(R.drawable.cooler_fifth_form_coolers_revenge)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Broly (Legendary Super Saiyan)")
                 && displayedCharacter.getSaga().equals("Broly - The Legendary Super Saiyan")) {
-
-
+            Glide.with(this).load(R.drawable.broly_dbs)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Super Gogeta")
                 && displayedCharacter.getSaga().equals("Fusion Reborn")) {
 
 
         } else if (displayedCharacter.getName().equals("Frieza (Final Form)")
                 && displayedCharacter.getSaga().equals("The Real 4-D")) {
-
-
+            Glide.with(this).load(R.drawable.frieza_final_form_the_real_4_d)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Broly (DBS)")
                 && displayedCharacter.getSaga().equals("Broly")) {
-
-
+            Glide.with(this).load(R.drawable.broly_legendary_super_saiyan)
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
+                    .into(dbzImage);
         }
 
 

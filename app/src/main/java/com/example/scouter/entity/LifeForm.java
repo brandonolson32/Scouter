@@ -1,5 +1,7 @@
 package com.example.scouter.entity;
 
+import android.icu.text.DecimalFormat;
+
 public class LifeForm implements Comparable<LifeForm> {
 
     protected String name;
@@ -64,9 +66,11 @@ public class LifeForm implements Comparable<LifeForm> {
 
     @Override
     public String toString() {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+
         if (saga == null || saga.equals("")) {
-            return this.name + " - " + powerLevel;
+            return this.name + " - " + formatter.format(powerLevel);
         }
-        return this.saga + ": " + this.name + " - " + powerLevel;
+        return this.saga + ": " + this.name + " - " + formatter.format(powerLevel);
     }
 }

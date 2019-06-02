@@ -76,7 +76,10 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         final int imageID = resources.getIdentifier(displayedCharacter.imageName(), "drawable",
                 this.getPackageName());
 
-        Glide.with(context).load(imageID).into(dbzImage);
+//        Glide.with(context).load(imageID).into(dbzImage);
+
+        Glide.with(this).load(imageID).apply(new RequestOptions()
+                .placeholder(R.mipmap.ic_launcher)).into(dbzImage);
 
 
 

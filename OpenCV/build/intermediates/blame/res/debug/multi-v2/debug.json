@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\jctal\\Desktop\\Scouter\\OpenCV\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "outputFile": "/Users/brandonolson/cs2340/Scouter/OpenCV/build/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\jctal\\Desktop\\Scouter\\OpenCV\\src\\main\\res\\values\\attrs.xml",
+                    "source": "/Users/brandonolson/cs2340/Scouter/OpenCV/src/main/res/values/attrs.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "57",
+                        "startOffsets": "55",
                         "endLines": "9",
                         "endColumns": "24",
-                        "endOffsets": "377"
+                        "endOffsets": "368"
                     },
                     "to": {
                         "startLines": "2",

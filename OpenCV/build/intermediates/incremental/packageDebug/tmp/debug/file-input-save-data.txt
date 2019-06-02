@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Fri May 31 19:23:03 EDT 2019
+#Sun Jun 02 13:52:14 EDT 2019
 0.baseType=DIRECTORY
-0.base=C\:\\Users\\jctal\\Desktop\\Scouter\\OpenCV\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+0.base=/Users/brandonolson/cs2340/Scouter/OpenCV/build/intermediates/dex/debug/mergeDexDebug/out
 0.path=classes.dex
 0.set=DEX
 count=1

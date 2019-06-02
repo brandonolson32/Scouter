@@ -271,7 +271,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Chiaotzu")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-            Glide.with(this).load(R.drawable.chiaotzu_vegeta_saga_saiyan_invasion)
+            Glide.with(this).load(R.drawable.chiaotzu_vegetasagasaiyaninvasion)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Gohan")
@@ -378,7 +378,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Gohan (Masenko)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-            int id = R.drawable.gohan_masenko_vegeta_saga_saiyan_invasion;
+            int id = R.drawable.gohanmasenko_vegetasagasaiyaninvasion;
             dbzImage.setImageResource(id);
         } else if (displayedCharacter.getName().equals("Goku (Super Saiyan)")
                 && displayedCharacter.getSaga().equals("Babidi Saga")) {
@@ -498,7 +498,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Bardock")
                 && displayedCharacter.getSaga().equals("Bardock - The Father of Goku")) {
-            Glide.with(this).load(R.drawable.bardock_the_father_of_goku)
+            Glide.with(this).load(R.drawable.bardock_bardockthefatherofgoku)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Cacao")
@@ -691,12 +691,12 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Cooler (fifth form)")
                 && displayedCharacter.getSaga().equals("Cooler's Revenge")) {
-            Glide.with(this).load(R.drawable.cooler_fifth_form_coolers_revenge)
+            Glide.with(this).load(R.drawable.coolerfifthform_coolersrevenge)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Broly (Legendary Super Saiyan)")
                 && displayedCharacter.getSaga().equals("Broly - The Legendary Super Saiyan")) {
-            Glide.with(this).load(R.drawable.broly_dbs)
+            Glide.with(this).load(R.drawable.brolydbs_broly)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         }

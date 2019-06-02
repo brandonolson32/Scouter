@@ -2,6 +2,8 @@ package com.example.scouter.entity;
 
 import android.icu.text.DecimalFormat;
 
+import java.util.Random;
+
 public class LifeForm implements Comparable<LifeForm> {
 
     protected String name;
@@ -58,7 +60,15 @@ public class LifeForm implements Comparable<LifeForm> {
         if (this.powerLevel > lf.powerLevel) {
             return 1;
         } else if (this.powerLevel == lf.powerLevel) {
-            return 0;
+            Random rand = new Random();
+            int randomInt = rand.nextInt(2);
+            int returnedInt = 0;
+            if (randomInt == 0) {
+                returnedInt = -1;
+            } else if (randomInt == 1) {
+                returnedInt = 1;
+            }
+            return returnedInt;
         } else {
             return -1;
         }
@@ -66,7 +76,7 @@ public class LifeForm implements Comparable<LifeForm> {
 
     @Override
     public String toString() {
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        DecimalFormat formatter = new DecimalFormat("#,###,###.###");
 
         if (saga == null || saga.equals("")) {
             return this.name + " - " + formatter.format(powerLevel);

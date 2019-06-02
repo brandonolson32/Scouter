@@ -4,12 +4,12 @@ import java.util.List;
 
 public class User extends LifeForm {
     private int id;
-    private int squat;
-    private int bench;
-    private int deadlift;
+    private double squat;
+    private double bench;
+    private double deadlift;
     private List<LifeForm> weakerAndStrongerFoes;
 
-    public User(String name, int s, int b, int d) {
+    public User(String name, double s, double b, double d) {
         super(name, Scouter.computePowerLevel(s, b, d));
         squat = s;
         bench = b;
@@ -36,13 +36,13 @@ public class User extends LifeForm {
      */
     public void setName(String name) { this.name = name; }
 
-    public int getSquat() {
+    public double getSquat() {
         return this.squat;
     }
-    public int getBench() {
+    public double getBench() {
         return this.bench;
     }
-    public int getDeadlift() {
+    public double getDeadlift() {
         return this.deadlift;
     }
     public List<LifeForm> getWeakerAndStrongerFoes() { return this.weakerAndStrongerFoes; }

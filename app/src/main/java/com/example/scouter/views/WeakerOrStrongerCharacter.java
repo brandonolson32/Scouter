@@ -149,7 +149,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Tien Shinhan Saga")) {
-            Glide.with(this).load(R.drawable.master_roshi_tien_shinhan_saga)
+            Glide.with(this).load(R.drawable.masterroshi_tienshinhansaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Master Roshi")
@@ -266,7 +266,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
-            Glide.with(this).load(R.drawable.goku_raditz_saga)
+            Glide.with(this).load(R.drawable.goku_raditzsaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Chiaotzu")
@@ -515,7 +515,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x2 Kaioken)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-            Glide.with(this).load(R.drawable.goku_x2_kaioken_vegeta_saga)
+            Glide.with(this).load(R.drawable.gokux2kaioken_vegetasaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Vegeta")
@@ -560,7 +560,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x3 Kaioken)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-            Glide.with(this).load(R.drawable.goku_x3_kaioken_vegeta_saga)
+            Glide.with(this).load(R.drawable.gokux3kaioken_vegetasaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Goku")
@@ -642,7 +642,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x10 Kaioken)")
                 && displayedCharacter.getSaga().equals("The Tree of Might")) {
-            Glide.with(this).load(R.drawable.goku_x10_kaioken_the_tree_of_might)
+            Glide.with(this).load(R.drawable.gokux10kaioken_thetreeofmight)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Turles")
@@ -685,7 +685,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
                 && displayedCharacter.getSaga().equals("Frieza Saga")) {
 //            Glide.with(this).load("https://66.media.tumblr.com/4e327afb4ba85a5c4fb496da7d8cbc5e/tumblr_mlaywvLCiZ1qlkrb8o1_500.gif").asGif().into(dbzImage);
 
-            Glide.with(this).load(R.drawable.goku_super_saiyan_frieza_saga)
+            Glide.with(this).load(R.drawable.gokusupersaiyan_friezasaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
 

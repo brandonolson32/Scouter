@@ -25,13 +25,8 @@ import java.util.Map;
 public class WebScrape {
 
     public static void main(String[] args) {
-//        List<LifeForm> lifeForms = webScrape();
-//        for (LifeForm lifeForm : lifeForms) {
-//            System.out.println(lifeForm.toString());
-//        }
-//        webScrape("/Users/brandonolson/cs2340/Scouter/app/" +
-//                "src/main/assets/DBZ_Database.csv");
-//        Repository.generateCharacters();
+        webScrape("/Users/brandonolson/cs2340/Scouter/app/" +
+                "src/main/assets/DBZ_Database.csv");
     }
 
     public static void webScrape(String filePath) {
@@ -55,7 +50,7 @@ public class WebScrape {
                 } else if (!data.get(0).hasText()) {
                     try {
                         double powerLevelFinal = 0;
-                        if (data.get(2).text().indexOf("-") >= 0) {
+                        if (data.get(2).text().contains("-")) {
                             String powerLevelString = data.get(2).text()
                                     .replaceAll("[^-.0123456789]", "");
                             String[] powerLevelStringArr = powerLevelString.split("-");
@@ -92,12 +87,6 @@ public class WebScrape {
                     motherOfData.get(saga).add(newGuy);
                 }
             }
-
-//             for (String s: motherOfData.keySet()){
-//             String key = s;
-//             String value = motherOfData.get(s).toString();
-//             System.out.println(key + " " + value);
-//             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -140,7 +129,5 @@ public class WebScrape {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-//        return lifeForms;
     }
 }

@@ -149,7 +149,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Tien Shinhan Saga")) {
-            Glide.with(this).load(R.drawable.master_roshi_tien_shinhan_saga)
+            Glide.with(this).load(R.drawable.masterroshitien_shinhansaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Master Roshi")
@@ -266,7 +266,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku")
                 && displayedCharacter.getSaga().equals("Raditz Saga")) {
-            Glide.with(this).load(R.drawable.goku_raditz_saga)
+            Glide.with(this).load(R.drawable.goku_raditzsaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Chiaotzu")
@@ -685,7 +685,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
                 && displayedCharacter.getSaga().equals("Frieza Saga")) {
 //            Glide.with(this).load("https://66.media.tumblr.com/4e327afb4ba85a5c4fb496da7d8cbc5e/tumblr_mlaywvLCiZ1qlkrb8o1_500.gif").asGif().into(dbzImage);
 
-            Glide.with(this).load(R.drawable.goku_super_saiyan_frieza_saga)
+            Glide.with(this).load(R.drawable.gokusupersaiyan_friezasaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
 

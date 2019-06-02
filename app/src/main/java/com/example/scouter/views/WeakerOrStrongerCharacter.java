@@ -149,9 +149,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Tien Shinhan Saga")) {
-            Glide.with(this).load(R.drawable.masterroshitien_shinhansaga)
-                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                    .into(dbzImage);
+
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Training)")) {
 
@@ -515,7 +513,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x2 Kaioken)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-            Glide.with(this).load(R.drawable.goku_x2_kaioken_vegeta_saga)
+            Glide.with(this).load(R.drawable.gokux2kaioken_vegetasaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Vegeta")
@@ -560,7 +558,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x3 Kaioken)")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-            Glide.with(this).load(R.drawable.goku_x3_kaioken_vegeta_saga)
+            Glide.with(this).load(R.drawable.gokux3kaioken_vegetasaga)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Goku")
@@ -642,7 +640,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Goku (x10 Kaioken)")
                 && displayedCharacter.getSaga().equals("The Tree of Might")) {
-            Glide.with(this).load(R.drawable.goku_x10_kaioken_the_tree_of_might)
+            Glide.with(this).load(R.drawable.gokux10kaioken_thetreeofmight)
                     .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
                     .into(dbzImage);
         } else if (displayedCharacter.getName().equals("Turles")

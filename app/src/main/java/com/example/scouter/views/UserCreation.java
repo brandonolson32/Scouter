@@ -79,6 +79,15 @@ public class UserCreation extends AppCompatActivity {
                         || squatMaxField.getText().toString().matches("")) {
                     Toast.makeText(UserCreation.this, "No fields can be blank",
                             Toast.LENGTH_SHORT).show();
+                } else if (Double.parseDouble(benchMaxField.getText().toString()) > Math.pow(10, 7)) {
+                    Toast.makeText(UserCreation.this, "You cannot bench that much",
+                            Toast.LENGTH_SHORT).show();
+                } else if (Double.parseDouble(squatMaxField.getText().toString()) > Math.pow(10, 7)) {
+                    Toast.makeText(UserCreation.this, "You cannot squat that much",
+                            Toast.LENGTH_SHORT).show();
+                } else if (Double.parseDouble(deadliftMaxField.getText().toString()) > Math.pow(10, 7)) {
+                    Toast.makeText(UserCreation.this, "You cannot deadlift that much",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     User user = new User(nameField.getText().toString(),
                             Integer.parseInt(squatMaxField.getText().toString()),

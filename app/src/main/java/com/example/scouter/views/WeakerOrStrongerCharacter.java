@@ -149,9 +149,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Tien Shinhan Saga")) {
-            Glide.with(this).load(R.drawable.masterroshi_tienshinhansaga)
-                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                    .into(dbzImage);
+
         } else if (displayedCharacter.getName().equals("Master Roshi")
                 && displayedCharacter.getSaga().equals("Vegeta Saga (Training)")) {
 

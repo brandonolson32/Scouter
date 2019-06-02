@@ -42,10 +42,6 @@ public class UserCreation extends AppCompatActivity {
     private EditText deadliftMaxField;
     private Button computeButton;
 
-    private int sm;
-    private int bm;
-    private int dm;
-
     private RequestQueue requestQueue;
 
     private final String baseUrl = "http://10.0.2.2:9080/myapi";

@@ -86,7 +86,7 @@ public class LifeForm implements Comparable<LifeForm> {
 
     // returns [lowercase letters in name]_[lowercase letters in saga]
     public String imageName() {
-        return this.name.replaceAll("[^A-Za-z]+", "").toLowerCase() + "_"
-                + this.saga.replaceAll("[^A-Za-z]+", "").toLowerCase();
+        return this.name.replaceAll("[^A-Za-z0-9]+", "").toLowerCase() + "_"
+                + this.saga.replaceAll("[^A-Za-z0-9]+", "").toLowerCase();
     }
 }

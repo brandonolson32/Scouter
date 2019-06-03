@@ -95,87 +95,87 @@ public class Repository {
     }
 
     public void shuffle() {
-        for (int i = 0; i < lifeForms.size(); i++) {
-            System.out.println(lifeForms.get(i));
-        }
+//        for (int i = 0; i < lifeForms.size(); i++) {
+//            System.out.println(lifeForms.get(i));
+//        }
+//
+//        LifeForm curr = lifeForms.get(0);
+//        for (int i = 1; i < lifeForms.size(); i++) {
+//            if (curr.getPowerLevel() == lifeForms.get(i).getPowerLevel()) {
+//                Random rand = new Random();
+//                int flip = rand.nextInt(2);
+//                if (flip == 0) {
+//                    lifeForms.set(i - 1, lifeForms.get(i));
+//                    lifeForms.set(i, curr);
+//                }
+//                curr = lifeForms.get(i);
+//            }
+//        }
+//
+//        for (int i = 0; i < lifeForms.size(); i++) {
+//            System.out.println(lifeForms.get(i));
+//        }
 
-        LifeForm curr = lifeForms.get(0);
-        for (int i = 1; i < lifeForms.size(); i++) {
-            if (curr.getPowerLevel() == lifeForms.get(i).getPowerLevel()) {
-                Random rand = new Random();
-                int flip = rand.nextInt(2);
-                if (flip == 0) {
-                    lifeForms.set(i - 1, lifeForms.get(i));
-                    lifeForms.set(i, curr);
+
+        List<LifeForm> duplicatePLLifeForms = new ArrayList<>();
+        for (LifeForm lifeForm : lifeForms) {
+            for (LifeForm lifeForm2 : lifeForms) {
+                if (lifeForm.equals(lifeForm2)) {
+                    continue;
+                } else if (lifeForm.getPowerLevel() == lifeForm2.getPowerLevel()) {
+                    duplicatePLLifeForms.add(lifeForm);
                 }
-                curr = lifeForms.get(i);
             }
         }
 
-        for (int i = 0; i < lifeForms.size(); i++) {
-            System.out.println(lifeForms.get(i));
+
+
+        for (LifeForm lifeForm : duplicatePLLifeForms) {
+            System.out.println(lifeForm.toString());
         }
 
 
-//        List<LifeForm> duplicatePLLifeForms = new ArrayList<>();
-//        for (LifeForm lifeForm : lifeForms) {
-//            for (LifeForm lifeForm2 : lifeForms) {
-//                if (lifeForm.equals(lifeForm2)) {
-//                    continue;
-//                } else if (lifeForm.getPowerLevel() == lifeForm2.getPowerLevel()) {
-//                    duplicatePLLifeForms.add(lifeForm);
-//                }
-//            }
-//        }
-//
-//
-//
-//        for (LifeForm lifeForm : duplicatePLLifeForms) {
-//            System.out.println(lifeForm.toString());
-//        }
-//
-//
-//
-//
-//
-//        Map<Double, List<LifeForm>> repeatPLs = new HashMap<>();
-//
-//        for (LifeForm lifeForm : duplicatePLLifeForms) {
-//            if (!repeatPLs.containsKey(lifeForm.getPowerLevel())) {
-//                repeatPLs.put(lifeForm.getPowerLevel(), new ArrayList<LifeForm>());
-//                repeatPLs.get(lifeForm.getPowerLevel()).add(lifeForm);
-//            } else {
-//                repeatPLs.get(lifeForm.getPowerLevel()).add(lifeForm);
-//            }
-//        }
-//
-//        List<LifeForm> finalLifeForms = new ArrayList<>();
-//
-//        for (LifeForm lifeForm : lifeForms) {
-//            if (!duplicatePLLifeForms.contains(lifeForm) && !finalLifeForms.contains(lifeForm)) {
-//                finalLifeForms.add(lifeForm);
-//            } else {
-//                List<LifeForm> duplicateList = repeatPLs.get(lifeForm.getPowerLevel());
-//
-//                Random rand = new Random();
-//                int randNumbs = duplicateList.size();
-//
-//                while (!repeatPLs.get(lifeForm.getPowerLevel()).isEmpty()) {
-//                    int index = rand.nextInt(randNumbs);
-//                    LifeForm tempLifeForm = duplicateList.get(index);
-//                    if (!finalLifeForms.contains(tempLifeForm)) {
-//                        finalLifeForms.add(tempLifeForm);
-//                        repeatPLs.get(lifeForm.getPowerLevel()).remove(tempLifeForm);
-//                    }
-//                }
-//            }
-//        }
-//
-//        lifeForms = finalLifeForms;
-//
-//        for (LifeForm lifeForm : lifeForms) {
-//            System.out.println(lifeForm.toString());
-//        }
+
+
+
+        Map<Double, List<LifeForm>> repeatPLs = new HashMap<>();
+
+        for (LifeForm lifeForm : duplicatePLLifeForms) {
+            if (!repeatPLs.containsKey(lifeForm.getPowerLevel())) {
+                repeatPLs.put(lifeForm.getPowerLevel(), new ArrayList<LifeForm>());
+                repeatPLs.get(lifeForm.getPowerLevel()).add(lifeForm);
+            } else {
+                repeatPLs.get(lifeForm.getPowerLevel()).add(lifeForm);
+            }
+        }
+
+        List<LifeForm> finalLifeForms = new ArrayList<>();
+
+        for (LifeForm lifeForm : lifeForms) {
+            if (!duplicatePLLifeForms.contains(lifeForm) && !finalLifeForms.contains(lifeForm)) {
+                finalLifeForms.add(lifeForm);
+            } else {
+                List<LifeForm> duplicateList = repeatPLs.get(lifeForm.getPowerLevel());
+
+                Random rand = new Random();
+                int randNumbs = duplicateList.size();
+
+                while (!repeatPLs.get(lifeForm.getPowerLevel()).isEmpty()) {
+                    int index = rand.nextInt(randNumbs);
+                    LifeForm tempLifeForm = duplicateList.get(index);
+                    if (!finalLifeForms.contains(tempLifeForm)) {
+                        finalLifeForms.add(tempLifeForm);
+                        repeatPLs.get(lifeForm.getPowerLevel()).remove(tempLifeForm);
+                    }
+                }
+            }
+        }
+
+        lifeForms = finalLifeForms;
+
+        for (LifeForm lifeForm : lifeForms) {
+            System.out.println(lifeForm.toString());
+        }
     }
 
     public static List<LifeForm> getLifeForms() {

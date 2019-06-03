@@ -162,7 +162,6 @@ public class Repository {
             }
         }
 
-
         List<LifeForm> finalLifeForms = new ArrayList<>();
 
         for (int i = 0; i < lifeForms.size(); i++) {

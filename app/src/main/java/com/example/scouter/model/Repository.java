@@ -10,10 +10,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import android.icu.text.DecimalFormat;
 
@@ -91,7 +93,6 @@ public class Repository {
                 }
             }
         }
-        shuffle();
     }
 
     public void shuffle() {
@@ -135,15 +136,19 @@ public class Repository {
 //            System.out.println(lifeForms.get(i));
 //        }
 
-        for (int i = 0; i < lifeForms.size(); i++) {
-            System.out.println(lifeForms.get(i));
-        }
 
-        System.out.println(lifeForms.size());
+//        System.out.println("Original lifeforms list");
+//        for (int i = 0; i < lifeForms.size(); i++) {
+//            System.out.println(lifeForms.get(i));
+//        }
 
+//        System.out.println(" Original size: " + lifeForms.size());
+
+        Collections.sort(lifeForms);
         Map<Double, List<LifeForm>> repeatPLs = new HashMap<>();
         List<LifeForm> duplicatePLLifeForms = new ArrayList<>();
         LifeForm current = lifeForms.get(0);
+
         for (int i = 1; i < lifeForms.size(); i++) {
             LifeForm lifeForm = lifeForms.get(i);
             if (current.getPowerLevel() == lifeForm.getPowerLevel()) {
@@ -162,36 +167,70 @@ public class Repository {
             }
         }
 
+//        System.out.println("Repeat LifeForms");
+//        for (Double powerLevel : repeatPLs.keySet()) {
+//            for (LifeForm lifeForm : repeatPLs.get(powerLevel)) {
+//                System.out.println(lifeForm.toString());
+//            }
+//        }
+
+
         List<LifeForm> finalLifeForms = new ArrayList<>();
 
         for (int i = 0; i < lifeForms.size(); i++) {
             LifeForm lf = lifeForms.get(i);
             double pl = lf.getPowerLevel();
 
-            System.out.println(lf);
-            System.out.println(repeatPLs.containsKey(pl));
+
+//            if (finalLifeForms.contains(lf)) {
+//                break;
+//            }
+
+//            System.out.println(lf);
+//            System.out.println(repeatPLs.containsKey(pl));
 
             if (repeatPLs.containsKey(pl)) {
+
+
+
                 List<LifeForm> repeats = repeatPLs.get(pl);
 
-                System.out.println(repeats);
+//                System.out.println(repeats);
 
                 Collections.shuffle(repeats);
 
-                System.out.println(repeats);
+//                System.out.println(repeats);
 
-                for (int j =0; j < repeats.size(); i++) {
-                    finalLifeForms.add(repeats.get(j));
+                for (int j = 0; j < repeats.size(); j++) {
+                    if (!finalLifeForms.contains(repeats.get(j))) {
+                        finalLifeForms.add(repeats.get(j));
+                    }
                 }
-                i += repeats.size() - 1;
-            } else {
+//                i += repeats.size() - 1;
+            } else if (!finalLifeForms.contains(lf)) {
                 finalLifeForms.add(lf);
             }
         }
 
-        lifeForms = finalLifeForms;
-        System.out.println(lifeForms);
+//        lifeForms = finalLifeForms;
 
+//        int n = finalLifeForms.size();
+//        List<LifeForm> lifeFormList = new ArrayList<>(n);
+//        for (LifeForm lf : finalLifeForms)
+//            lifeFormList.add(lf);
+
+        lifeForms.clear();
+
+        lifeForms = finalLifeForms;
+
+
+
+
+        for (LifeForm lifeForm : lifeForms) {
+            System.out.println(lifeForm.toString());
+        }
+
+        System.out.println("Current size of lifeForms: " + lifeForms.size());
     }
 
     public static List<LifeForm> getLifeForms() {
@@ -209,7 +248,7 @@ public class Repository {
 
         for (Iterator<LifeForm> iterator = lifeForms.iterator(); iterator.hasNext();) {
             LifeForm lifeForm = iterator.next();
-            if(lifeForm instanceof User) {
+            if (lifeForm instanceof User) {
                 iterator.remove();
             }
         }
@@ -218,6 +257,7 @@ public class Repository {
         lifeForms.add(user);
         this.user = user;
         shuffle();
+        System.out.println("heyyyyyyyyy" + lifeForms.indexOf(user));
     }
 
     public void updateUser(User user) {
@@ -265,7 +305,7 @@ public class Repository {
     }
 
     public void getWeakerStronger() {
-        generateCharacters();
+//        generateCharacters();
         List<LifeForm> weakerAndStrongerLifeForms = new ArrayList<>();
         int index = lifeForms.indexOf(user);
         if (index == 0) {

@@ -41,8 +41,8 @@ public class EditUserViewModel extends AndroidViewModel {
      */
     public void addUser(User user) {
         interactor.addUser(user);
-        System.out.println(user);
-        System.out.println("added user");
+//        System.out.println(user);
+//        System.out.println("added user");
     }
 
     /**

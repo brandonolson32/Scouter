@@ -49,7 +49,8 @@ public class LifeForm implements Comparable<LifeForm> {
             return false;
         }
         LifeForm lf = (LifeForm) obj;
-        return lf.name.equals(this.name) && lf.powerLevel == this.powerLevel;
+        return lf.name.equals(this.name) && lf.powerLevel == this.powerLevel
+                && lf.saga.equals(this.saga);
     }
 
     @Override

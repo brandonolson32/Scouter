@@ -8,73 +8,69 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/character_info"
+        android:id="@+id/char_desc"
         android:layout_width="327dp"
         android:layout_height="83dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="16dp"
         android:gravity="center"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
         android:textColor="#A4A72727"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/press_start_2p"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_of_picture"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_pic"
         tools:text="@string/characterInfo" />
 
     <Button
-        android:id="@+id/weaker_or_stronger_challenger_button"
+        android:id="@+id/next_button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="150dp"
         android:layout_height="52dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/strongerChallengerButton"
+        android:text="@string/nextButtonText"
         app:fontFamily="@font/wallpoet"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/middle"
-        app:layout_constraintTop_toTopOf="@+id/scouter_display_button_1" />
+        app:layout_constraintStart_toStartOf="@+id/middle_guideline"
+        app:layout_constraintTop_toTopOf="@+id/prev_button" />
 
     <Button
-        android:id="@+id/scouter_display_button_1"
+        android:id="@+id/prev_button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/scouterDisplayButton"
+        android:text="@string/previousButtonText"
         app:fontFamily="@font/wallpoet"
-        app:layout_constraintEnd_toStartOf="@+id/middle"
+        app:layout_constraintEnd_toStartOf="@+id/middle_guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_info" />
+        app:layout_constraintTop_toBottomOf="@+id/char_desc" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/middle"
+        android:id="@+id/middle_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_percent="0.5"
         android:orientation="vertical"/>
 
     <android.support.constraint.Guideline
-        android:id="@+id/bottom_of_picture"
+        android:id="@+id/bottom_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.65" />
 
     <ImageView
-        android:id="@+id/dbz_image"
+        android:id="@+id/char_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -84,25 +80,26 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_of_picture"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_pic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/top_of_picture"
+        app:layout_constraintTop_toTopOf="@+id/top_margin"
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/top_of_picture"
+        android:id="@+id/top_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <TextView
-        android:id="@+id/user_info"
+        android:id="@+id/user_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
@@ -117,12 +114,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/press_start_2p"
-        app:layout_constraintBottom_toTopOf="@+id/dbz_image"
+        app:layout_constraintBottom_toTopOf="@+id/top_margin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/thor_button"
+        android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -130,12 +128,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#E7B810"
-        android:text="@string/thorButtonText"
-        android:visibility="gone"
-        app:fontFamily="@font/wallpoet"
+        android:text="List of Lifeforms"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scouter_display_button_1" />
+        app:layout_constraintTop_toBottomOf="@+id/prev_button" />
 
 </android.support.constraint.ConstraintLayout>

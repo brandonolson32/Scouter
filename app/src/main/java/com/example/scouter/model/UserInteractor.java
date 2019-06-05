@@ -105,4 +105,9 @@ public class UserInteractor extends Interactor {
     public List<LifeForm> getWeakerAndStrongerFoes() {
         return user.getWeakerAndStrongerFoes();
     }
+
+    public List<LifeForm> getLifeformsList() {
+        repo = getRepo();
+        return repo.getLifeformsList();
+    }
 }

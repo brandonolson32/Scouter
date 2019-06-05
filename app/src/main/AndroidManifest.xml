@@ -21,6 +21,8 @@
         </activity>
         <activity android:label="@string/app_name" android:name=".views.ScouterDisplay"/>
         <activity android:label="@string/app_name" android:name=".views.WeakerOrStrongerCharacter"/>
+        <activity android:label="@string/app_name" android:name=".views.ListOfAllLifeforms"/>
+        <activity android:label="@string/app_name" android:name=".views.SingleCharacter"/>
 
         <meta-data
             android:name="preloaded_fonts"

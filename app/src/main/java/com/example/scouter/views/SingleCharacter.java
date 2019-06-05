@@ -1,7 +1,5 @@
 package com.example.scouter.views;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,8 +20,10 @@ public class SingleCharacter extends AppCompatActivity {
 
     private ImageView charImage;
     private TextView charDesc;
+    private TextView userInfo;
     private Button next;
     private Button prev;
+    private Button back;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,15 +34,23 @@ public class SingleCharacter extends AppCompatActivity {
 
         charImage = findViewById(R.id.char_image);
         charDesc = findViewById(R.id.char_desc);
+        userInfo = findViewById(R.id.user_text);
         next = findViewById(R.id.next_button);
-        prev = findViewById(R.id.previous_button);
+        prev = findViewById(R.id.prev_button);
+        back = findViewById(R.id.back_button);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SingleCharacter.this.startActivity(new Intent(SingleCharacter.this,
+                        ListOfAllLifeforms.class));
+            }
+        });
+
+        userInfo.setText(model.getUser().toString());
 
         final int pos = getIntent().getExtras().getInt("pos");
-
-        String characterInfo = getIntent().getExtras().getString("lifeform");
-        String[] split = characterInfo.split("-");
-        LifeForm lf = new LifeForm(split[0], Double.valueOf(split[1]), split[2]);
+        LifeForm lf = model.getLifeformList().get(pos);
 
         charDesc.setText(lf.toString());
 
@@ -51,14 +59,18 @@ public class SingleCharacter extends AppCompatActivity {
         Glide.with(this).load(imageID).apply(new RequestOptions()
                 .placeholder(R.mipmap.ic_launcher)).into(charImage);
 
+        final int positionOfUser = model.getLifeformList().indexOf(model.getUser());
         if (pos == 0) {
             prev.setVisibility(View.GONE);
             next.setOnClickListener(new View.OnClickListener() {
                 Intent intent = new Intent(SingleCharacter.this, SingleCharacter.class);
                 @Override
                 public void onClick(View v) {
-                    intent.putExtra("lifeform", model.getLifeformList().get(pos + 1).imageName());
-                    intent.putExtra("pos", pos + 1);
+                    if (pos + 1 == positionOfUser) {
+                        intent.putExtra("pos", pos + 2);
+                    } else {
+                        intent.putExtra("pos", pos + 1);
+                    }
                     startActivity(intent);
                 }
             });
@@ -68,8 +80,11 @@ public class SingleCharacter extends AppCompatActivity {
                 Intent intent = new Intent(SingleCharacter.this, SingleCharacter.class);
                 @Override
                 public void onClick(View v) {
-                    intent.putExtra("lifeform", model.getLifeformList().get(pos - 1).imageName());
-                    intent.putExtra("pos", pos - 1);
+                    if (pos - 1 == positionOfUser) {
+                        intent.putExtra("pos", pos - 2);
+                    } else {
+                        intent.putExtra("pos", pos - 1);
+                    }
                     startActivity(intent);
                 }
             });
@@ -78,8 +93,11 @@ public class SingleCharacter extends AppCompatActivity {
                 Intent intent = new Intent(SingleCharacter.this, SingleCharacter.class);
                 @Override
                 public void onClick(View v) {
-                    intent.putExtra("lifeform", model.getLifeformList().get(pos + 1).imageName());
-                    intent.putExtra("pos", pos + 1);
+                    if (pos + 1 == positionOfUser) {
+                        intent.putExtra("pos", pos + 2);
+                    } else {
+                        intent.putExtra("pos", pos + 1);
+                    }
                     startActivity(intent);
                 }
             });
@@ -87,8 +105,11 @@ public class SingleCharacter extends AppCompatActivity {
                 Intent intent = new Intent(SingleCharacter.this, SingleCharacter.class);
                 @Override
                 public void onClick(View v) {
-                    intent.putExtra("lifeform", model.getLifeformList().get(pos - 1).imageName());
-                    intent.putExtra("pos", pos - 1);
+                    if (pos - 1 == positionOfUser) {
+                        intent.putExtra("pos", pos - 2);
+                    } else {
+                        intent.putExtra("pos", pos - 1);
+                    }
                     startActivity(intent);
                 }
             });

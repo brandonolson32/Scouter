@@ -575,7 +575,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 //
 //        } else if (displayedCharacter.getName().equals("Goku (x4 Kaioken)")
 //                && displayedCharacter.getSaga().equals("Vegeta Saga (Saiyan Invasion)")) {
-//            Glide.with(this).load(R.drawable.goku_x4_kaioken_vegeta_saga)
+//            Glide.with(this).load(R.drawable.gokux4kaioken_vegetasaga)
 //                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
 //                    .into(dbzImage);
 //        } else if (displayedCharacter.getName().equals("Dr. Wheelo")

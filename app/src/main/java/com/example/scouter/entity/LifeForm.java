@@ -74,7 +74,9 @@ public class LifeForm implements Comparable<LifeForm> {
         if (saga == null || saga.equals("")) {
             return this.name + " - " + formatter.format(powerLevel);
         }
-        return this.name + " - " + formatter.format(powerLevel) + " (" + this.saga + ")";
+        return "Name: " + this.name+ "\n"
+                + "Power Level: " + formatter.format(powerLevel) +  "\n"
+                + "Saga: " + this.saga;
     }
 
     // returns [lowercase letters in name]_[lowercase letters in saga]

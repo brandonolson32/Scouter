@@ -96,6 +96,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
             });
         }
 
+
         otherCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

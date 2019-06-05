@@ -43,13 +43,15 @@ public class Repository {
         return next_id;
     }
 
+    public List<LifeForm> getLifeformsList() {
+        System.out.println(lifeForms);
+        return lifeForms;
+    }
+
     /**
      * Stores characters in the array
      */
     public void generateCharacters() {
-
-//        lifeForms.clear();
-
         String file = "assets/DBZ_Database.csv";
         InputStream in = getClass().getClassLoader()
                 .getResourceAsStream(file);
@@ -79,7 +81,6 @@ public class Repository {
                 String saga = lineArr[0];
                 LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
                 lifeForms.add(lifeForm);
-//                System.out.println(lifeForm.toString());
             }
             Collections.sort(lifeForms);
         } catch (IOException e) {
@@ -95,55 +96,7 @@ public class Repository {
         }
     }
 
-    public void shuffle() {
-//        for (int i = 0; i < lifeForms.size(); i++) {
-//            System.out.println(lifeForms.get(i));
-//        }
-//
-//        int index = 0;
-//        List<LifeForm> sequence = new ArrayList<>();
-//        LifeForm curr = lifeForms.get(0);
-//
-//        // goes thru lifeForms to find and permutate repetition of power level (lifeForms is sorted)
-//        for (int i = 1; i < lifeForms.size(); i++) {
-//            if (curr.getPowerLevel() == lifeForms.get(i).getPowerLevel()) {
-//                index = i - 1;
-//                if (sequence.size() == 0) {
-//                    sequence.add(curr);
-//                    sequence.add(lifeForms.get(i));
-//                }
-//                curr = lifeForms.get(i);
-//            } else {
-//                if (sequence.size() > 0) {
-//                    LifeForm[] permutation = new LifeForm[sequence.size()];
-//                    for (int j = 0; i < sequence.size(); i++) {
-//                        Random rand = new Random();
-//                        int flip = rand.nextInt(sequence.size());
-//                        while (permutation[flip] != null) {
-//                            flip = rand.nextInt(sequence.size());
-//                        }
-//                        permutation[flip] = sequence.get(index + j);
-//                    }
-//                    for (int x = 0; x < sequence.size(); x++) {
-//                        lifeForms.set(index + x, permutation[x]);
-//                    }
-//                }
-//                curr = lifeForms.get(i);
-//            }
-//        }
-//
-//        for (int i = 0; i < lifeForms.size(); i++) {
-//            System.out.println(lifeForms.get(i));
-//        }
-
-
-//        System.out.println("Original lifeforms list");
-//        for (int i = 0; i < lifeForms.size(); i++) {
-//            System.out.println(lifeForms.get(i));
-//        }
-
-//        System.out.println(" Original size: " + lifeForms.size());
-
+    private void shuffle() {
         Collections.sort(lifeForms);
         Map<Double, List<LifeForm>> repeatPLs = new HashMap<>();
         List<LifeForm> duplicatePLLifeForms = new ArrayList<>();
@@ -167,13 +120,6 @@ public class Repository {
             }
         }
 
-//        System.out.println("Repeat LifeForms");
-//        for (Double powerLevel : repeatPLs.keySet()) {
-//            for (LifeForm lifeForm : repeatPLs.get(powerLevel)) {
-//                System.out.println(lifeForm.toString());
-//            }
-//        }
-
 
         List<LifeForm> finalLifeForms = new ArrayList<>();
 
@@ -181,25 +127,9 @@ public class Repository {
             LifeForm lf = lifeForms.get(i);
             double pl = lf.getPowerLevel();
 
-
-//            if (finalLifeForms.contains(lf)) {
-//                break;
-//            }
-
-//            System.out.println(lf);
-//            System.out.println(repeatPLs.containsKey(pl));
-
             if (repeatPLs.containsKey(pl)) {
-
-
-
                 List<LifeForm> repeats = repeatPLs.get(pl);
-
-//                System.out.println(repeats);
-
                 Collections.shuffle(repeats);
-
-//                System.out.println(repeats);
 
                 for (int j = 0; j < repeats.size(); j++) {
                     if (!finalLifeForms.contains(repeats.get(j))) {
@@ -212,25 +142,9 @@ public class Repository {
             }
         }
 
-//        lifeForms = finalLifeForms;
-
-//        int n = finalLifeForms.size();
-//        List<LifeForm> lifeFormList = new ArrayList<>(n);
-//        for (LifeForm lf : finalLifeForms)
-//            lifeFormList.add(lf);
-
         lifeForms.clear();
 
         lifeForms = finalLifeForms;
-
-
-
-
-        for (LifeForm lifeForm : lifeForms) {
-            System.out.println(lifeForm.toString());
-        }
-
-        System.out.println("Current size of lifeForms: " + lifeForms.size());
     }
 
     public static List<LifeForm> getLifeForms() {
@@ -256,8 +170,8 @@ public class Repository {
         user.setId(id);
         lifeForms.add(user);
         this.user = user;
+        lifeForms.add(new LifeForm("Hafthor Bjornsson", 10000, "The World's Strongest Man"));
         shuffle();
-        System.out.println("heyyyyyyyyy" + lifeForms.indexOf(user));
     }
 
     public void updateUser(User user) {

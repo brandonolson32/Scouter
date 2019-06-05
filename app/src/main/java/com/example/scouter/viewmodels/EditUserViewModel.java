@@ -93,7 +93,8 @@ public class EditUserViewModel extends AndroidViewModel {
         return interactor.getWeakerAndStrongerFoes();
     }
 
-//    public LifeForm getStronger() {
-//        return interactor.getStrongerFoe();
-//    }
+    public List<LifeForm> getLifeformList() {
+        return interactor.getLifeformsList();
+    }
+
 }

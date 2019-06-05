@@ -14,4 +14,11 @@
     <string name="scouterDisplayButton">Scouter Display</string>
     <string name="userInfo">User Name - Power Level</string>
     <string name="characterInfo">Saga: Character Name - Power Level</string>
+
+    <string name="otherCharText1">Weaker Challenger</string>
+    <string name="otherCharText0">Stronger Challenger</string>
+    <string name="thorButtonText">Encountered Lifeforms</string>
+
+    <string name="nextButtonText">Next Lifeform</string>
+    <string name="previousButtonText">Previous Lifeform</string>
 </resources>

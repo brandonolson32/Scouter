@@ -3,6 +3,7 @@ package com.example.scouter.views;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
     private Button otherCharacterButton;
     private Button scouterDisplayButton;
     private Button thorTriggeredButton;
+    private SharedPreferences powerDexData;
 
     @Override
     /*
@@ -82,10 +84,15 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         Glide.with(this).load(imageID).apply(new RequestOptions()
                 .placeholder(R.mipmap.ic_launcher)).into(dbzImage);
 
-        // if user gets Hafthor, then they unlock the list of characters
-        //displayedCharacter.getName().equals("Hafthor Bjornsson")
-        if (true) {
-            thorTriggeredButton.setVisibility(View.VISIBLE);
+        powerDexData = this.getSharedPreferences("com.example.scouter", Context.MODE_PRIVATE);
+        if (!powerDexData.contains(displayedCharacter.toString())) {
+            powerDexData.edit().putString(displayedCharacter.varHolder(),
+                    displayedCharacter.toString()).apply();
+        }
+
+        // if user gets Hafthor, then they unlock the list of character
+        if (displayedCharacter.getName().equals("Hafthor Bjornsson")) {
+            thorTriggeredButton.setText(getString(R.string.thorButton));
             thorTriggeredButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -94,13 +101,21 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
                                     ListOfAllLifeforms.class));
                 }
             });
+        } else {
+            thorTriggeredButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WeakerOrStrongerCharacter.this.startActivity(
+                            new Intent(WeakerOrStrongerCharacter.this,
+                                    EncounteredLifeforms.class));
+                }
+            });
         }
 
 
         otherCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent myIntent = new Intent(WeakerOrStrongerCharacter.this,
                         WeakerOrStrongerCharacter.class);
 

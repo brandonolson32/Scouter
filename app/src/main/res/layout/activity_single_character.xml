@@ -35,8 +35,10 @@
         android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/nextButtonText"
         app:fontFamily="@font/wallpoet"
+        app:layout_constraintBottom_toTopOf="@+id/encountered_lifeforms_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/middle_guideline"
         app:layout_constraintTop_toTopOf="@+id/prev_button" />
@@ -120,7 +122,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/back_button"
+        android:id="@+id/encountered_lifeforms_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -128,7 +130,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#E7B810"
-        android:text="List of Lifeforms"
+        android:text="@string/encounteredLifeforms"
+        app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

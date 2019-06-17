@@ -43,7 +43,7 @@ public class SingleCharacter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SingleCharacter.this.startActivity(new Intent(SingleCharacter.this,
-                        EncounteredLifeforms.class));
+                        PowerDex.class));
             }
         });
 

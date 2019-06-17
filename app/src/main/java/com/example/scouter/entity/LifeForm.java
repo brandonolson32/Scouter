@@ -2,8 +2,6 @@ package com.example.scouter.entity;
 
 import android.icu.text.DecimalFormat;
 
-import java.util.Random;
-
 public class LifeForm implements Comparable<LifeForm> {
 
     protected String name;
@@ -74,10 +72,14 @@ public class LifeForm implements Comparable<LifeForm> {
         if (saga == null || saga.equals("")) {
             return this.name + " - " + formatter.format(powerLevel);
         }
-        if (saga.equals("Broly (DBS)")) {
-            return this.name + " - unmeasurable (" + this.saga + ")";
+        if (name.equals("Broly (DBS)")) {
+            return "Name: " + this.name+ "\n"
+                    + "Power Level: Unmeasurable" +  "\n"
+                    + "Saga: " + this.saga;
         }
-        return this.name + " - " + formatter.format(powerLevel) + " (" + this.saga + ")";
+        return "Name: " + this.name+ "\n"
+                + "Power Level: " + formatter.format(powerLevel) +  "\n"
+                + "Saga: " + this.saga;
     }
 
     // returns [lowercase letters in name]_[lowercase letters in saga]

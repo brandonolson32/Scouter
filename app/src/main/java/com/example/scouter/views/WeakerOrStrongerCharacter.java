@@ -91,7 +91,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         }
 
         // if user gets Hafthor, then they unlock the list of character
-        if (displayedCharacter.getName().equals("Hafthor Bjornsson")) {
+        if (displayedCharacter.getName().equals("The Mountain")) {
             thorTriggeredButton.setText(getString(R.string.thorButton));
             thorTriggeredButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -107,7 +107,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
                 public void onClick(View v) {
                     WeakerOrStrongerCharacter.this.startActivity(
                             new Intent(WeakerOrStrongerCharacter.this,
-                                    EncounteredLifeforms.class));
+                                    PowerDex.class));
                 }
             });
         }

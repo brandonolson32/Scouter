@@ -21,7 +21,7 @@
         </activity>
         <activity android:label="@string/app_name" android:name=".views.ScouterDisplay"/>
         <activity android:label="@string/app_name" android:name=".views.WeakerOrStrongerCharacter"/>
-        <activity android:label="@string/app_name" android:name=".views.EncounteredLifeforms"/>
+        <activity android:label="@string/app_name" android:name=".views.PowerDex"/>
         <activity android:label="@string/app_name" android:name=".views.SingleCharacter"/>
         <activity android:label="@string/app_name" android:name=".views.ListOfAllLifeforms"/>
 

@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/thor_button"
+        android:id="@+id/encountered_lifeforms_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -128,7 +128,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#E7B810"
-        android:text="@string/thorButtonText"
+        android:text="@string/encounteredLifeforms"
         android:visibility="visible"
         app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toBottomOf="parent"

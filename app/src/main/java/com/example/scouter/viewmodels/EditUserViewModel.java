@@ -2,11 +2,9 @@ package com.example.scouter.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.MutableLiveData;
-import android.graphics.ColorSpace;
 import android.support.annotation.NonNull;
 
-import com.example.scouter.entity.Character.LifeForm;
+import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
 import com.example.scouter.model.Model;
 import com.example.scouter.model.UserInteractor;
@@ -43,8 +41,8 @@ public class EditUserViewModel extends AndroidViewModel {
      */
     public void addUser(User user) {
         interactor.addUser(user);
-        System.out.println(user);
-        System.out.println("added user");
+//        System.out.println(user);
+//        System.out.println("added user");
     }
 
     /**
@@ -71,7 +69,7 @@ public class EditUserViewModel extends AndroidViewModel {
      * Gets the User's power level
      * @return int the User's power level
      */
-    public int getPowerLevel() { return interactor.getPowerLevel(); }
+    public double getPowerLevel() { return interactor.getPowerLevel(); }
 
     /**
      * Sets the User's name
@@ -87,7 +85,23 @@ public class EditUserViewModel extends AndroidViewModel {
         interactor.setId(id);
     }
 
-    public LifeForm comparableLifeForm() {
-        return interactor.getComparableLifeForm();
+    public void weakStrong() {
+        interactor.getComparableLifeForm();
+    }
+
+    public List<LifeForm> getWeakerAndStronger() {
+        return interactor.getWeakerAndStrongerFoes();
+    }
+
+    public List<LifeForm> getLifeformList() {
+        return interactor.getLifeformsList();
+    }
+
+    public void setEncountered(List<LifeForm> encountered) {
+        interactor.setEncountered(encountered);
+    }
+
+    public List<LifeForm> getEncounteredLifeForms() {
+        return interactor.getEncounteredLifeForms();
     }
 }

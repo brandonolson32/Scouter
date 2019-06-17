@@ -1,19 +1,24 @@
 package com.example.scouter.model;
 
-import com.example.scouter.entity.Character.Farmer;
-import com.example.scouter.entity.Character.Frieza;
-import com.example.scouter.entity.Character.Goku;
-import com.example.scouter.entity.Character.Krillin;
-import com.example.scouter.entity.Character.LifeForm;
-import com.example.scouter.entity.Character.MrPopo;
-import com.example.scouter.entity.Character.Nail;
-import com.example.scouter.entity.Character.Piccolo;
+import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+
+import android.icu.text.DecimalFormat;
 
 /**
  * This class is an abstraction of the data storage for the business classes
@@ -22,7 +27,15 @@ public class Repository {
 
     private static int next_id = 1;
     private User user;
-    private static List<LifeForm> lifeForms; // All the lifeForms
+    private static List<LifeForm> lifeForms = new ArrayList<>();
+    private static List<LifeForm> encounteredLifeForms = new ArrayList<>();
+
+    /**
+     * Make a new Repository object
+     */
+    public Repository() {
+        generateCharacters();
+    }
 
     /***
      * Generate unique numbers to be used as keys
@@ -32,25 +45,108 @@ public class Repository {
         return next_id;
     }
 
-    /**
-     * Make a new Repository object
-     */
-    public Repository() {
-        lifeForms = new ArrayList<>();
+    public List<LifeForm> getLifeformsList() {
+        System.out.println(lifeForms);
+        return lifeForms;
     }
 
     /**
      * Stores characters in the array
      */
     public void generateCharacters() {
-        lifeForms.add(new Goku());
-        lifeForms.add(new Farmer());
-        lifeForms.add(new Frieza());
-        lifeForms.add(new Krillin());
-        lifeForms.add(new MrPopo());
-        lifeForms.add(new Nail());
-        lifeForms.add(new Piccolo());
+        String file = "assets/DBZ_Database.csv";
+        InputStream in = getClass().getClassLoader()
+                .getResourceAsStream(file);
+
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new InputStreamReader(in));
+
+            // headers
+            reader.readLine();
+            // do reading, usually loop until end of file reading
+            String nextLine;
+            while ((nextLine = reader.readLine()) != null) {
+                String line = nextLine.replace("\"", "");
+                String[] lineArr = line.split(",");
+
+                String name = lineArr[1];
+                double powerLevel = 0;
+
+                try {
+                    powerLevel = DecimalFormat.getNumberInstance()
+                            .parse(lineArr[2]).doubleValue();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String saga = lineArr[0];
+                LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
+                lifeForms.add(lifeForm);
+            }
+            Collections.sort(lifeForms);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void shuffle() {
         Collections.sort(lifeForms);
+        Map<Double, List<LifeForm>> repeatPLs = new HashMap<>();
+        List<LifeForm> duplicatePLLifeForms = new ArrayList<>();
+        LifeForm current = lifeForms.get(0);
+
+        for (int i = 1; i < lifeForms.size(); i++) {
+            LifeForm lifeForm = lifeForms.get(i);
+            if (current.getPowerLevel() == lifeForm.getPowerLevel()) {
+                if (duplicatePLLifeForms.size() == 0) {
+                    duplicatePLLifeForms.add(current);
+                    duplicatePLLifeForms.add(lifeForm);
+                } else {
+                    duplicatePLLifeForms.add(lifeForm);
+                }
+            } else {
+                if (duplicatePLLifeForms.size() > 0) {
+                    repeatPLs.put(current.getPowerLevel(), duplicatePLLifeForms);
+                    duplicatePLLifeForms = new ArrayList<>();
+                }
+                current = lifeForm;
+            }
+        }
+
+
+        List<LifeForm> finalLifeForms = new ArrayList<>();
+
+        for (int i = 0; i < lifeForms.size(); i++) {
+            LifeForm lf = lifeForms.get(i);
+            double pl = lf.getPowerLevel();
+
+            if (repeatPLs.containsKey(pl)) {
+                List<LifeForm> repeats = repeatPLs.get(pl);
+                Collections.shuffle(repeats);
+
+                for (int j = 0; j < repeats.size(); j++) {
+                    if (!finalLifeForms.contains(repeats.get(j))) {
+                        finalLifeForms.add(repeats.get(j));
+                    }
+                }
+//                i += repeats.size() - 1;
+            } else if (!finalLifeForms.contains(lf)) {
+                finalLifeForms.add(lf);
+            }
+        }
+
+        lifeForms.clear();
+
+        lifeForms = finalLifeForms;
     }
 
     public static List<LifeForm> getLifeForms() {
@@ -65,10 +161,19 @@ public class Repository {
     }
 
     public void addUser(User user) {
+
+        for (Iterator<LifeForm> iterator = lifeForms.iterator(); iterator.hasNext();) {
+            LifeForm lifeForm = iterator.next();
+            if (lifeForm instanceof User) {
+                iterator.remove();
+            }
+        }
         int id = Repository.getNextUniqueID();
         user.setId(id);
         lifeForms.add(user);
         this.user = user;
+        lifeForms.add(new LifeForm("Hafthor Bjornsson", 10000, "The World's Strongest Man"));
+        shuffle();
     }
 
     public void updateUser(User user) {
@@ -95,7 +200,7 @@ public class Repository {
      * Gets the User's power level
      * @return int the power level of the user
      */
-    public int getUserPowerLevel() {
+    public double getUserPowerLevel() {
         return user.getPowerLevel();
     }
 
@@ -113,5 +218,31 @@ public class Repository {
      */
     public void setId(int id) {
         user.setId(id);
+    }
+
+    public void getWeakerStronger() {
+//        generateCharacters();
+        List<LifeForm> weakerAndStrongerLifeForms = new ArrayList<>();
+        int index = lifeForms.indexOf(user);
+        if (index == 0) {
+            weakerAndStrongerLifeForms.add(new LifeForm("Tardigrade", 0, "Goeze Saga"));
+            weakerAndStrongerLifeForms.add(lifeForms.get(1));
+        } else if (index == lifeForms.size() - 1) {
+            weakerAndStrongerLifeForms.add(lifeForms.get(lifeForms.size() - 1));
+            weakerAndStrongerLifeForms.add(new LifeForm("Polycephabrick", Double.POSITIVE_INFINITY, "Brick Boys"));
+        } else {
+            weakerAndStrongerLifeForms.add(lifeForms.get(index - 1));
+            weakerAndStrongerLifeForms.add(lifeForms.get(index + 1));
+        }
+        user.setWeakerAndStrongerFoes(weakerAndStrongerLifeForms);
+    }
+
+    public void setEncountered(List<LifeForm> encountered) {
+        encounteredLifeForms = encountered;
+        Collections.sort(encounteredLifeForms);
+    }
+
+    public List<LifeForm> getEncounteredLifeForms() {
+        return encounteredLifeForms;
     }
 }

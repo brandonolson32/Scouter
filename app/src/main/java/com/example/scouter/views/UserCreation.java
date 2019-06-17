@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 
 import com.example.scouter.R;
 import com.example.scouter.entity.User;
+import com.example.scouter.model.Model;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
 import org.json.JSONObject;
@@ -39,10 +41,6 @@ public class UserCreation extends AppCompatActivity {
     private EditText benchMaxField;
     private EditText deadliftMaxField;
     private Button computeButton;
-
-    private int sm;
-    private int bm;
-    private int dm;
 
     private RequestQueue requestQueue;
 
@@ -71,48 +69,31 @@ public class UserCreation extends AppCompatActivity {
         computeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(nameField.getText().toString(),
-                        Integer.parseInt(squatMaxField.getText().toString()),
-                        Integer.parseInt(benchMaxField.getText().toString()),
-                        Integer.parseInt(deadliftMaxField.getText().toString()));
-                userViewModel.addUser(user);
-                UserCreation.this.startActivity(new Intent(UserCreation.this, ScouterDisplay.class));
+                if (nameField.getText().toString().matches("")
+                        || benchMaxField.getText().toString().matches("")
+                        || deadliftMaxField.getText().toString().matches("")
+                        || squatMaxField.getText().toString().matches("")) {
+                    Toast.makeText(UserCreation.this, "No fields can be blank",
+                            Toast.LENGTH_SHORT).show();
+                } else if (Double.parseDouble(benchMaxField.getText().toString()) > Math.pow(10, 7)) {
+                    Toast.makeText(UserCreation.this, "You cannot bench that much",
+                            Toast.LENGTH_SHORT).show();
+                } else if (Double.parseDouble(squatMaxField.getText().toString()) > Math.pow(10, 7)) {
+                    Toast.makeText(UserCreation.this, "You cannot squat that much",
+                            Toast.LENGTH_SHORT).show();
+                } else if (Double.parseDouble(deadliftMaxField.getText().toString()) > Math.pow(10, 7)) {
+                    Toast.makeText(UserCreation.this, "You cannot deadlift that much",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    User user = new User(nameField.getText().toString(),
+                            Integer.parseInt(squatMaxField.getText().toString()),
+                            Integer.parseInt(benchMaxField.getText().toString()),
+                            Integer.parseInt(deadliftMaxField.getText().toString()));
+                    userViewModel.addUser(user);
+                    UserCreation.this.startActivity(new Intent(UserCreation.this,
+                            ScouterDisplay.class));
+                }
             }
         });
-
-
-    }
-
-    /**
-     * This function adds info to the user
-     */
-    private void addUser(){
-        this.url = this.baseUrl + "/player";
-
-        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
-        // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend reading the office docs:
-        // https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("user_id", userViewModel.getId());
-        params.put("user_name", userViewModel.getName());
-        params.put("user_power_level", userViewModel.getPowerLevel());
-        JSONObject postparams = new JSONObject(params);
-        Log.i("Test", postparams.toString());
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                url, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("Volley", "You did it!");
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("Volley", error.toString());
-                    }
-                });
-        requestQueue.add(jsonObjReq);
     }
 }

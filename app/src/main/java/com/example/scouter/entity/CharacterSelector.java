@@ -1,6 +1,5 @@
 package com.example.scouter.entity;
 
-import com.example.scouter.entity.Character.LifeForm;
 import com.example.scouter.model.Repository;
 
 import java.util.Collections;

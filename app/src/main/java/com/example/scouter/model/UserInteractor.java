@@ -2,12 +2,9 @@ package com.example.scouter.model;
 
 import android.util.Log;
 
-import com.example.scouter.entity.Character.LifeForm;
+import com.example.scouter.entity.LifeForm;
 import com.example.scouter.entity.User;
-
 import java.util.List;
-
-import static com.example.scouter.model.Repository.getLifeForms;
 
 /**
  * This class is the interactor for the User
@@ -77,7 +74,7 @@ public class UserInteractor extends Interactor {
      * Gets the User's power level
      * @return int the power level of the user
      */
-    public int getPowerLevel() {
+    public double getPowerLevel() {
         repo = getRepo();
         return repo.getUserPowerLevel();
     }
@@ -100,19 +97,27 @@ public class UserInteractor extends Interactor {
         repo.setUserName(name);
     }
 
-    public LifeForm getComparableLifeForm() {
-        int pl = this.getPowerLevel();
+    public void getComparableLifeForm() {
         repo = getRepo();
-        List<LifeForm> lf = getLifeForms();
-        int index = 0;
-        for (int i = 0; i < lf.size(); i++) {
-            if (pl > lf.get(i).getPowerLevel()) {
-                index++;
-            }
-        }
-        if (index == 0) {
-            return lf.get(index);
-        }
-        return lf.get(index - 1);
+        repo.getWeakerStronger();
+    }
+
+    public List<LifeForm> getWeakerAndStrongerFoes() {
+        return user.getWeakerAndStrongerFoes();
+    }
+
+    public List<LifeForm> getLifeformsList() {
+        repo = getRepo();
+        return repo.getLifeformsList();
+    }
+
+    public void setEncountered(List<LifeForm> encountered) {
+        repo = getRepo();
+        repo.setEncountered(encountered);
+    }
+
+    public List<LifeForm> getEncounteredLifeForms() {
+        repo = getRepo();
+        return repo.getEncounteredLifeForms();
     }
 }

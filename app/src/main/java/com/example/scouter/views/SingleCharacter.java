@@ -74,7 +74,7 @@ public class SingleCharacter extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        } else if (pos == model.getLifeformList().size() - 1) {
+        } else if (pos == model.getEncounteredLifeForms().size() - 1) {
             next.setVisibility(View.GONE);
             prev.setOnClickListener(new View.OnClickListener() {
                 Intent intent = new Intent(SingleCharacter.this, SingleCharacter.class);

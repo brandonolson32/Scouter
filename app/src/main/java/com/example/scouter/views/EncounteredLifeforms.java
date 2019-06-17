@@ -47,7 +47,7 @@ public class EncounteredLifeforms extends AppCompatActivity {
 
         powerDex = findViewById(R.id.list);
         ArrayAdapter<LifeForm> arrayToListView = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, encounteredLifeForms);
+                R.layout.listview_text, encounteredLifeForms);
         powerDex.setAdapter(arrayToListView);
 
         // when they click on an item, it sends them to the single character screen

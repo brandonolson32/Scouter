@@ -34,8 +34,6 @@ public class ScouterDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_powerlevel);
 
-
-
         userViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
         userName = findViewById(R.id.name_field);
@@ -72,8 +70,6 @@ public class ScouterDisplay extends AppCompatActivity {
                 userViewModel.getUser().getDeadlift());
 
         userName.setText(userViewModel.getName());
-
-        System.out.println(userViewModel.getPowerLevel());
 
         if (userViewModel.getPowerLevel() < 1000000) {
             powerLevel.setText(formatter.format(userViewModel.getPowerLevel()));

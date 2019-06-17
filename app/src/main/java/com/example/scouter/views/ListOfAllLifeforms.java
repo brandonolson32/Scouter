@@ -46,7 +46,7 @@ public class ListOfAllLifeforms extends AppCompatActivity {
         // sets up the listview
         allLifeForms = findViewById(R.id.all_characters_listview);
         ArrayAdapter<LifeForm> arrayToListView = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, model.getLifeformList());
+                R.layout.listview_text, model.getLifeformList());
         allLifeForms.setAdapter(arrayToListView);
 
         // when they click on an item, it sends them to the single character screen

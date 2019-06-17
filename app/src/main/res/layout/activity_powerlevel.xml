@@ -157,43 +157,32 @@
     <Button
         android:id="@+id/weaker_character_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_margin="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:soundEffectsEnabled="true"
         android:text="@string/weakerChallengerButton"
         android:textSize="12sp"
         app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/rightCircle"
-        app:layout_constraintStart_toStartOf="@+id/leftCircle"
-        app:layout_constraintTop_toTopOf="@+id/buttonLineHz" />
+        app:layout_constraintRight_toLeftOf="@+id/stronger_character_button"
+        app:layout_constraintLeft_toRightOf="@+id/leftCircle"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLineHz" />
 
     <Button
         android:id="@+id/stronger_character_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:soundEffectsEnabled="true"
         android:text="@string/strongerChallengerButton"
         android:textSize="12sp"
         app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/buttonLineVr"
-        app:layout_constraintStart_toStartOf="@+id/rightCircle"
-        app:layout_constraintTop_toTopOf="@+id/buttonLineHz" />
+        app:layout_constraintRight_toLeftOf="@+id/buttonLineVr"
+        app:layout_constraintLeft_toRightOf="@id/weaker_character_button"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLineHz" />
 
     <Button
         android:id="@+id/home"

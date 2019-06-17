@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,6 +28,7 @@ public class Repository {
     private static int next_id = 1;
     private User user;
     private static List<LifeForm> lifeForms = new ArrayList<>();
+    private static List<LifeForm> encounteredLifeForms = new ArrayList<>();
 
     /**
      * Make a new Repository object
@@ -233,5 +235,14 @@ public class Repository {
             weakerAndStrongerLifeForms.add(lifeForms.get(index + 1));
         }
         user.setWeakerAndStrongerFoes(weakerAndStrongerLifeForms);
+    }
+
+    public void setEncountered(List<LifeForm> encountered) {
+        encounteredLifeForms = encountered;
+        Collections.sort(encounteredLifeForms);
+    }
+
+    public List<LifeForm> getEncounteredLifeForms() {
+        return encounteredLifeForms;
     }
 }

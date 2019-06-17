@@ -21,4 +21,6 @@
 
     <string name="nextButtonText">Next Lifeform</string>
     <string name="previousButtonText">Previous Lifeform</string>
+
+    <string name="thorButton">All lifeforms</string>
 </resources>

@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/character_info"
-        android:layout_width="327dp"
-        android:layout_height="83dp"
+        android:layout_width="329dp"
+        android:layout_height="85dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
@@ -34,12 +34,11 @@
         android:layout_width="150dp"
         android:layout_height="52dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/strongerChallengerButton"
         app:fontFamily="@font/wallpoet"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="@+id/middle"
         app:layout_constraintTop_toTopOf="@+id/scouter_display_button_1" />
 
@@ -49,13 +48,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/scouterDisplayButton"
         app:fontFamily="@font/wallpoet"
         app:layout_constraintEnd_toStartOf="@+id/middle"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/character_info" />
 
@@ -136,6 +134,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scouter_display_button_1" />
+        app:layout_constraintTop_toBottomOf="@+id/scouter_display_button_1"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

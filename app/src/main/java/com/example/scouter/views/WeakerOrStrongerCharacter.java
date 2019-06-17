@@ -107,7 +107,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
                 public void onClick(View v) {
                     WeakerOrStrongerCharacter.this.startActivity(
                             new Intent(WeakerOrStrongerCharacter.this,
-                                    EncounteredLifeforms.class));
+                                    PowerDex.class));
                 }
             });
         }

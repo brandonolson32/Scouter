@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/green_digital_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".25" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <android.support.constraint.Guideline
         android:id="@+id/bottom_listview"
@@ -28,6 +29,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:alpha=".75"
         android:background="#FFEB3B"
         app:layout_constraintBottom_toTopOf="@+id/bottom_listview"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +45,8 @@
         android:layout_marginEnd="8dp"
         android:text="Congrats! Upon finding The Mountain, you have unlocked all the characters!"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:fontFamily="@font/caesar_dressing"
         app:layout_constraintBottom_toTopOf="@+id/all_characters_listview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,19 +69,22 @@
         android:layout_marginEnd="8dp"
         android:backgroundTint="#E91E63"
         android:text="@string/scouterDisplayButton"
+        app:fontFamily="@font/wallpoet"
         app:layout_constraintEnd_toStartOf="@+id/middle_vert"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottom_listview" />
 
     <Button
-        android:id="@+id/home_portal"
+        android:id="@+id/new_reading"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="New Reading"
+        android:backgroundTint="#2196F3"
+        android:text="@string/newReadingButton"
+        app:fontFamily="@font/wallpoet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/middle_vert"
         app:layout_constraintTop_toTopOf="@+id/bottom_listview" />

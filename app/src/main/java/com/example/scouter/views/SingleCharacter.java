@@ -37,13 +37,13 @@ public class SingleCharacter extends AppCompatActivity {
         userInfo = findViewById(R.id.user_text);
         next = findViewById(R.id.next_button);
         prev = findViewById(R.id.prev_button);
-        back = findViewById(R.id.back_button);
+        back = findViewById(R.id.encountered_lifeforms_button);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SingleCharacter.this.startActivity(new Intent(SingleCharacter.this,
-                        EncounteredLifeforms.class));
+                        PowerDex.class));
             }
         });
 
@@ -88,7 +88,8 @@ public class SingleCharacter extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        } else {
+        } else if (model.getEncounteredLifeForms().size() != 1) {
+
             next.setOnClickListener(new View.OnClickListener() {
                 Intent intent = new Intent(SingleCharacter.this, SingleCharacter.class);
                 @Override
@@ -113,6 +114,9 @@ public class SingleCharacter extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        }
+        } else if (model.getEncounteredLifeForms().size() == 1) { {
+            prev.setVisibility(View.GONE);
+            next.setVisibility(View.GONE);
+        }}
     }
 }

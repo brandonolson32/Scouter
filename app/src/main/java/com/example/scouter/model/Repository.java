@@ -172,7 +172,8 @@ public class Repository {
         user.setId(id);
         lifeForms.add(user);
         this.user = user;
-        lifeForms.add(new LifeForm("Hafthor Bjornsson", 10000, "The World's Strongest Man"));
+        lifeForms.add(new LifeForm("The Mountain", 10000,
+                "Game of Thrones"));
         shuffle();
     }
 
@@ -225,11 +226,11 @@ public class Repository {
         List<LifeForm> weakerAndStrongerLifeForms = new ArrayList<>();
         int index = lifeForms.indexOf(user);
         if (index == 0) {
-            weakerAndStrongerLifeForms.add(new LifeForm("Tardigrade", 0, "Goeze Saga"));
+            weakerAndStrongerLifeForms.add(new LifeForm("Stick", 0,
+                    "Wilderness"));
             weakerAndStrongerLifeForms.add(lifeForms.get(1));
         } else if (index == lifeForms.size() - 1) {
             weakerAndStrongerLifeForms.add(lifeForms.get(lifeForms.size() - 1));
-            weakerAndStrongerLifeForms.add(new LifeForm("Polycephabrick", Double.POSITIVE_INFINITY, "Brick Boys"));
         } else {
             weakerAndStrongerLifeForms.add(lifeForms.get(index - 1));
             weakerAndStrongerLifeForms.add(lifeForms.get(index + 1));

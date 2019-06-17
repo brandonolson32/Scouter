@@ -1,11 +1,9 @@
 package com.example.scouter.views;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,7 +19,7 @@ import com.example.scouter.viewmodels.EditUserViewModel;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class EncounteredLifeforms extends AppCompatActivity {
+public class PowerDex extends AppCompatActivity {
     private EditUserViewModel model;
     private ListView powerDex;
     private SharedPreferences powerDexData;
@@ -33,7 +31,7 @@ public class EncounteredLifeforms extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_encountered_lifeforms);
+        setContentView(R.layout.activity_power_dex);
         model = ViewModelProviders.of(this).get(EditUserViewModel.class);
 
         powerDexData = this.getSharedPreferences("com.example.scouter", Context.MODE_PRIVATE);
@@ -52,7 +50,7 @@ public class EncounteredLifeforms extends AppCompatActivity {
 
         // when they click on an item, it sends them to the single character screen
         powerDex.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            Intent intent = new Intent(EncounteredLifeforms.this, SingleCharacter.class);
+            Intent intent = new Intent(PowerDex.this, SingleCharacter.class);
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent.putExtra("pos", position);
@@ -60,26 +58,29 @@ public class EncounteredLifeforms extends AppCompatActivity {
             }
         });
         scouterDisplay = findViewById(R.id.scouter_display_portal);
-        home = findViewById(R.id.home_portal);
+        home = findViewById(R.id.new_reading);
         resetDex = findViewById(R.id.reset_dex);
         scouterDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EncounteredLifeforms.this.startActivity(new Intent(EncounteredLifeforms.this, ScouterDisplay.class));
+                PowerDex.this.startActivity(new Intent(PowerDex.this, ScouterDisplay.class));
             }
         });
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EncounteredLifeforms.this.startActivity(new Intent(EncounteredLifeforms.this, UserCreation.class));
+                PowerDex.this.startActivity(new Intent(PowerDex.this,
+                        UserCreation.class));
             }
         });
-        final SharedPreferences pref = this.getSharedPreferences("com.example.scouter", Context.MODE_PRIVATE);
+        final SharedPreferences pref = this.getSharedPreferences("com.example.scouter",
+                Context.MODE_PRIVATE);
         resetDex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pref.edit().clear().apply();
-                EncounteredLifeforms.this.startActivity(new Intent(EncounteredLifeforms.this, EncounteredLifeforms.class));
+                PowerDex.this.startActivity(new Intent(PowerDex.this,
+                        PowerDex.class));
             }
         });
     }

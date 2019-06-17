@@ -87,4 +87,8 @@ public class LifeForm implements Comparable<LifeForm> {
         return this.name.replaceAll("[^A-Za-z0-9]+", "").toLowerCase() + "_"
                 + this.saga.replaceAll("[^A-Za-z0-9]+", "").toLowerCase();
     }
+
+    public String varHolder() {
+        return this.name + "*" + this.saga + "*" + this.powerLevel;
+    }
 }

@@ -97,4 +97,11 @@ public class EditUserViewModel extends AndroidViewModel {
         return interactor.getLifeformsList();
     }
 
+    public void setEncountered(List<LifeForm> encountered) {
+        interactor.setEncountered(encountered);
+    }
+
+    public List<LifeForm> getEncounteredLifeForms() {
+        return interactor.getEncounteredLifeForms();
+    }
 }

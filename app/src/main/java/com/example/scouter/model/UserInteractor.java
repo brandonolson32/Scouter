@@ -110,4 +110,14 @@ public class UserInteractor extends Interactor {
         repo = getRepo();
         return repo.getLifeformsList();
     }
+
+    public void setEncountered(List<LifeForm> encountered) {
+        repo = getRepo();
+        repo.setEncountered(encountered);
+    }
+
+    public List<LifeForm> getEncounteredLifeForms() {
+        repo = getRepo();
+        return repo.getEncounteredLifeForms();
+    }
 }

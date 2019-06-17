@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Jun 08 18:34:21 EDT 2019
+#Sun Jun 16 23:10:28 EDT 2019
 0.baseType=DIRECTORY
 0.base=/Users/brandonolson/cs2340/Scouter/OpenCV/build/intermediates/dex/debug/mergeDexDebug/out
 0.path=classes.dex

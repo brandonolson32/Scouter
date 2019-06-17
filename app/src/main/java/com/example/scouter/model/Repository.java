@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,6 +28,7 @@ public class Repository {
     private static int next_id = 1;
     private User user;
     private static List<LifeForm> lifeForms = new ArrayList<>();
+    private static List<LifeForm> encounteredLifeForms = new ArrayList<>();
 
     /**
      * Make a new Repository object
@@ -170,7 +172,8 @@ public class Repository {
         user.setId(id);
         lifeForms.add(user);
         this.user = user;
-        lifeForms.add(new LifeForm("Hafthor Bjornsson", 10000, "The World's Strongest Man"));
+        lifeForms.add(new LifeForm("The Mountain", 10000,
+                "Game of Thrones"));
         shuffle();
     }
 
@@ -223,15 +226,24 @@ public class Repository {
         List<LifeForm> weakerAndStrongerLifeForms = new ArrayList<>();
         int index = lifeForms.indexOf(user);
         if (index == 0) {
-            weakerAndStrongerLifeForms.add(new LifeForm("Tardigrade", 0, "Goeze Saga"));
+            weakerAndStrongerLifeForms.add(new LifeForm("Stick", 0,
+                    "Wilderness"));
             weakerAndStrongerLifeForms.add(lifeForms.get(1));
         } else if (index == lifeForms.size() - 1) {
             weakerAndStrongerLifeForms.add(lifeForms.get(lifeForms.size() - 1));
-            weakerAndStrongerLifeForms.add(new LifeForm("Polycephabrick", Double.POSITIVE_INFINITY, "Brick Boys"));
         } else {
             weakerAndStrongerLifeForms.add(lifeForms.get(index - 1));
             weakerAndStrongerLifeForms.add(lifeForms.get(index + 1));
         }
         user.setWeakerAndStrongerFoes(weakerAndStrongerLifeForms);
+    }
+
+    public void setEncountered(List<LifeForm> encountered) {
+        encounteredLifeForms = encountered;
+        Collections.sort(encounteredLifeForms);
+    }
+
+    public List<LifeForm> getEncounteredLifeForms() {
+        return encounteredLifeForms;
     }
 }

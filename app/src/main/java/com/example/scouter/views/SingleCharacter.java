@@ -43,14 +43,14 @@ public class SingleCharacter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SingleCharacter.this.startActivity(new Intent(SingleCharacter.this,
-                        ListOfAllLifeforms.class));
+                        EncounteredLifeforms.class));
             }
         });
 
         userInfo.setText(model.getUser().toString());
 
         final int pos = getIntent().getExtras().getInt("pos");
-        LifeForm lf = model.getLifeformList().get(pos);
+        LifeForm lf = model.getEncounteredLifeForms().get(pos);
 
         charDesc.setText(lf.toString());
 

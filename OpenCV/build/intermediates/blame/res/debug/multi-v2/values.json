@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\jctal\\Desktop\\Scouter\\OpenCV\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\jctal\\Desktop\\Apps\\Scouter\\OpenCV\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\jctal\\Desktop\\Scouter\\OpenCV\\src\\main\\res\\values\\attrs.xml",
+                    "source": "C:\\Users\\jctal\\Desktop\\Apps\\Scouter\\OpenCV\\src\\main\\res\\values\\attrs.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

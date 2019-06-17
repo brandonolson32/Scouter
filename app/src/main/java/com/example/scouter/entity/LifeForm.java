@@ -74,14 +74,19 @@ public class LifeForm implements Comparable<LifeForm> {
         if (saga == null || saga.equals("")) {
             return this.name + " - " + formatter.format(powerLevel);
         }
-        return "Name: " + this.name+ "\n"
-                + "Power Level: " + formatter.format(powerLevel) +  "\n"
-                + "Saga: " + this.saga;
+        if (saga.equals("Broly (DBS)")) {
+            return this.name + " - unmeasurable (" + this.saga + ")";
+        }
+        return this.name + " - " + formatter.format(powerLevel) + " (" + this.saga + ")";
     }
 
     // returns [lowercase letters in name]_[lowercase letters in saga]
     public String imageName() {
         return this.name.replaceAll("[^A-Za-z0-9]+", "").toLowerCase() + "_"
                 + this.saga.replaceAll("[^A-Za-z0-9]+", "").toLowerCase();
+    }
+
+    public String varHolder() {
+        return this.name + "*" + this.saga + "*" + this.powerLevel;
     }
 }

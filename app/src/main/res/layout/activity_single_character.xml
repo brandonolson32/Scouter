@@ -83,11 +83,11 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_pic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/top_margin"
+        app:layout_constraintTop_toTopOf="@+id/top_listview"
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/top_margin"
+        android:id="@+id/top_listview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -114,7 +114,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/press_start_2p"
-        app:layout_constraintBottom_toTopOf="@+id/top_margin"
+        app:layout_constraintBottom_toTopOf="@+id/top_listview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

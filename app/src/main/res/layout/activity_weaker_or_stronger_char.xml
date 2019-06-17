@@ -131,7 +131,7 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="#E7B810"
         android:text="@string/thorButtonText"
-        android:visibility="gone"
+        android:visibility="visible"
         app:fontFamily="@font/wallpoet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

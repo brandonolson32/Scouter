@@ -60,7 +60,11 @@ public class SingleCharacter extends AppCompatActivity {
                 .placeholder(R.mipmap.ic_launcher)).into(charImage);
 
         final int positionOfUser = model.getLifeformList().indexOf(model.getUser());
-        if (pos == 0) {
+
+        if (model.getEncounteredLifeForms().size() == 1) {
+            prev.setVisibility(View.GONE);
+            next.setVisibility(View.GONE);
+        } else if (pos == 0) {
             prev.setVisibility(View.GONE);
             next.setOnClickListener(new View.OnClickListener() {
                 Intent intent = new Intent(SingleCharacter.this, SingleCharacter.class);
@@ -114,9 +118,6 @@ public class SingleCharacter extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        } else if (model.getEncounteredLifeForms().size() == 1) { {
-            prev.setVisibility(View.GONE);
-            next.setVisibility(View.GONE);
-        }}
+        }
     }
 }

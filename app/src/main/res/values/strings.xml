@@ -23,4 +23,7 @@
     <string name="previousButtonText">Previous Lifeform</string>
 
     <string name="thorButton">All lifeforms</string>
+
+    <string name="congrats_text">Congratulations! Upon finding The Mountain, you have unlocked all
+        of the characters in the Dragon Ball Universe.</string>
 </resources>

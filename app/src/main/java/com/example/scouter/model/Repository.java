@@ -82,6 +82,14 @@ public class Repository {
                 }
                 String saga = lineArr[0];
                 LifeForm lifeForm = new LifeForm(name, powerLevel, saga);
+                // Prevents a duplicates from being added
+                if (lifeForm.getName().equals("Raditz") && lifeForm.getPowerLevel() == 1500) {
+                    continue;
+                }
+                if (lifeForm.getName().equals("Turles") && lifeForm.getPowerLevel() == 19000) {
+                    continue;
+                }
+                // End of duplicate prevention
                 lifeForms.add(lifeForm);
             }
             Collections.sort(lifeForms);

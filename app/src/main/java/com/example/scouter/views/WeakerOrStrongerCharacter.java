@@ -34,6 +34,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
     private TextView characterInfoTextView;
     private TextView userInfoTextView;
+    private TextView congratsTextView;
     private Button otherCharacterButton;
     private Button scouterDisplayButton;
     private Button thorTriggeredButton;
@@ -59,6 +60,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         displayedCharacter = weakerAndStrongerLifeForms.get(indexOfLifeForm);
 
         userInfoTextView = findViewById(R.id.user_info);
+        congratsTextView = findViewById(R.id.congrats_text);
         characterInfoTextView = findViewById(R.id.character_info);
         scouterDisplayButton = findViewById(R.id.scouter_display_button_1);
         otherCharacterButton = findViewById(R.id.weaker_or_stronger_challenger_button);
@@ -77,14 +79,15 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         ImageView dbzImage = findViewById(R.id.dbz_image);
         Resources resources = this.getResources();
-        final int imageID = resources.getIdentifier(displayedCharacter.imageName(), "drawable",
-                this.getPackageName());
+        final int imageID = resources.getIdentifier(displayedCharacter.imageName(),
+                "drawable", this.getPackageName());
 
         // sets the image to the comparable character
         Glide.with(this).load(imageID).apply(new RequestOptions()
                 .placeholder(R.mipmap.ic_launcher)).into(dbzImage);
 
-        powerDexData = this.getSharedPreferences("com.example.scouter", Context.MODE_PRIVATE);
+        powerDexData = this.getSharedPreferences("com.example.scouter",
+                Context.MODE_PRIVATE);
         if (!powerDexData.contains(displayedCharacter.toString())) {
             powerDexData.edit().putString(displayedCharacter.varHolder(),
                     displayedCharacter.toString()).apply();
@@ -92,13 +95,26 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         // if user gets Hafthor, then they unlock the list of character
         if (displayedCharacter.getName().equals("The Mountain")) {
+
+            congratsTextView.setText(getResources().getString(R.string.congrats_text));
+
+            // gives the user all the lifeforms
+            userViewModel.setEncountered(userViewModel.getLifeformList());
+            powerDexData = this.getSharedPreferences("com.example.scouter", Context.MODE_PRIVATE);
+            for (LifeForm lf : userViewModel.getLifeformList()) {
+                if (!powerDexData.contains(lf.toString())) {
+                    powerDexData.edit().putString(lf.varHolder(),
+                            lf.toString()).apply();
+                }
+            }
+
             thorTriggeredButton.setText(getString(R.string.thorButton));
             thorTriggeredButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     WeakerOrStrongerCharacter.this.startActivity(
                             new Intent(WeakerOrStrongerCharacter.this,
-                                    ListOfAllLifeforms.class));
+                                    PowerDex.class));
                 }
             });
         } else {

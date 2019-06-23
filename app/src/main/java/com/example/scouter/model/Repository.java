@@ -46,7 +46,6 @@ public class Repository {
     }
 
     public List<LifeForm> getLifeformsList() {
-        System.out.println(lifeForms);
         return lifeForms;
     }
 
@@ -222,15 +221,12 @@ public class Repository {
     }
 
     public void getWeakerStronger() {
-//        generateCharacters();
         List<LifeForm> weakerAndStrongerLifeForms = new ArrayList<>();
         int index = lifeForms.indexOf(user);
         if (index == 0) {
             weakerAndStrongerLifeForms.add(new LifeForm("Stick", 0,
                     "Wilderness"));
             weakerAndStrongerLifeForms.add(lifeForms.get(1));
-        } else if (index == lifeForms.size() - 1) {
-            weakerAndStrongerLifeForms.add(lifeForms.get(lifeForms.size() - 1));
         } else {
             weakerAndStrongerLifeForms.add(lifeForms.get(index - 1));
             weakerAndStrongerLifeForms.add(lifeForms.get(index + 1));

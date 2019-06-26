@@ -1,6 +1,7 @@
 package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentCallbacks2;
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.widget.TextView;
 import com.example.scouter.R;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ScouterDisplay extends AppCompatActivity {
     private EditUserViewModel userViewModel;
 
@@ -24,6 +28,35 @@ public class ScouterDisplay extends AppCompatActivity {
     private Button weakerCharacterButton;
     private Button strongerCharacterButton;
     private Button homeButton;
+
+    private static List<ScouterDisplay.IMemoryInfo> memInfoList =
+            new ArrayList<ScouterDisplay.IMemoryInfo>();
+
+    public static abstract interface IMemoryInfo {
+        public void goodTimeToReleaseMemory();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        //don't compare with == as intermediate stages also can be reported,
+        // always better to check >= or <=
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+            try {
+                // Activity at the front will get earliest than activity at the
+                // back
+                for (int i = memInfoList.size() - 1; i >= 0; i--) {
+                    try {
+                        memInfoList.get(i).goodTimeToReleaseMemory();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     /*

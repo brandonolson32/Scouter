@@ -1,6 +1,7 @@
 package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentCallbacks2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,9 @@ import com.example.scouter.R;
 import com.example.scouter.entity.LifeForm;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SingleCharacter extends AppCompatActivity {
     private EditUserViewModel model;
 
@@ -24,6 +28,35 @@ public class SingleCharacter extends AppCompatActivity {
     private Button next;
     private Button prev;
     private Button back;
+
+    private static List<SingleCharacter.IMemoryInfo> memInfoList =
+            new ArrayList<SingleCharacter.IMemoryInfo>();
+
+    public static abstract interface IMemoryInfo {
+        public void goodTimeToReleaseMemory();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        //don't compare with == as intermediate stages also can be reported,
+        // always better to check >= or <=
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+            try {
+                // Activity at the front will get earliest than activity at the
+                // back
+                for (int i = memInfoList.size() - 1; i >= 0; i--) {
+                    try {
+                        memInfoList.get(i).goodTimeToReleaseMemory();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

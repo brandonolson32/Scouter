@@ -1,6 +1,7 @@
 package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentCallbacks2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,9 @@ import com.example.scouter.viewmodels.EditUserViewModel;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * class to configure the player upon creation
@@ -46,6 +49,35 @@ public class UserCreation extends AppCompatActivity {
 
     private final String baseUrl = "http://10.0.2.2:9080/myapi";
     private String url;
+
+    private static List<UserCreation.IMemoryInfo> memInfoList =
+            new ArrayList<UserCreation.IMemoryInfo>();
+
+    public static abstract interface IMemoryInfo {
+        public void goodTimeToReleaseMemory();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        //don't compare with == as intermediate stages also can be reported,
+        // always better to check >= or <=
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+            try {
+                // Activity at the front will get earliest than activity at the
+                // back
+                for (int i = memInfoList.size() - 1; i >= 0; i--) {
+                    try {
+                        memInfoList.get(i).goodTimeToReleaseMemory();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     /*

@@ -18,8 +18,10 @@ public class Scouter {
             userPL = Math.round(10000 - deviation);
             if (userPL < 8000) {
                 double percentile = userPL / 8000;
-                double lower = Repository.getLifeForms().get((int) Math.round(100 * percentile)).getPowerLevel();
-                double higher = Repository.getLifeForms().get((int) Math.round(100 * percentile + 1)).getPowerLevel();
+                double lower = Repository.getLifeForms().get((int) Math.round(100 * percentile))
+                        .getPowerLevel();
+                double higher = Repository.getLifeForms().get(
+                        (int) Math.round(100 * percentile + 1)).getPowerLevel();
                 userPL = lower + percentile * (higher - lower);
             }
             return userPL;

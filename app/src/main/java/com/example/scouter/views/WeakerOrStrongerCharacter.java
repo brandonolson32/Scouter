@@ -1,6 +1,7 @@
 package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import com.example.scouter.R;
 import com.example.scouter.entity.LifeForm;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,6 +41,35 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
     private Button scouterDisplayButton;
     private Button thorTriggeredButton;
     private SharedPreferences powerDexData;
+
+    private static List<WeakerOrStrongerCharacter.IMemoryInfo> memInfoList =
+            new ArrayList<WeakerOrStrongerCharacter.IMemoryInfo>();
+
+    public static abstract interface IMemoryInfo {
+        public void goodTimeToReleaseMemory();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        //don't compare with == as intermediate stages also can be reported,
+        // always better to check >= or <=
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+            try {
+                // Activity at the front will get earliest than activity at the
+                // back
+                for (int i = memInfoList.size() - 1; i >= 0; i--) {
+                    try {
+                        memInfoList.get(i).goodTimeToReleaseMemory();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     /*

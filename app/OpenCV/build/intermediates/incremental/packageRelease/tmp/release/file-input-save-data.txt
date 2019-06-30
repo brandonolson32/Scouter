@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Wed Jun 26 11:49:28 EDT 2019
+0.baseType=DIRECTORY
+0.base=/Users/brandonolson/cs2340/Scouter/OpenCV/build/intermediates/dex/release/mergeDexRelease/out
+0.path=classes.dex
+0.set=DEX
+count=1

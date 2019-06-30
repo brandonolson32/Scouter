@@ -63,10 +63,9 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         congratsTextView = findViewById(R.id.congrats_text);
         characterInfoTextView = findViewById(R.id.character_info);
         scouterDisplayButton = findViewById(R.id.scouter_display_button_1);
-        otherCharacterButton = findViewById(R.id.weaker_or_stronger_challenger_button);
         thorTriggeredButton = findViewById(R.id.encountered_lifeforms_button);
 
-        Button otherCharacterButton = findViewById(
+        otherCharacterButton = findViewById(
                 R.id.weaker_or_stronger_challenger_button);
         if (indexOfLifeForm == 0) {
             otherCharacterButton.setText(getResources().getString(R.string.otherCharText0));

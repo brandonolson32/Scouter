@@ -168,7 +168,6 @@ public class Repository {
     }
 
     public void addUser(User user) {
-
         for (Iterator<LifeForm> iterator = lifeForms.iterator(); iterator.hasNext();) {
             LifeForm lifeForm = iterator.next();
             if (lifeForm instanceof User) {

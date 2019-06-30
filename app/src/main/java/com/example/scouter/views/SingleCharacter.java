@@ -1,6 +1,7 @@
 package com.example.scouter.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentCallbacks2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,7 @@ import com.example.scouter.R;
 import com.example.scouter.entity.LifeForm;
 import com.example.scouter.viewmodels.EditUserViewModel;
 
-public class SingleCharacter extends AppCompatActivity {
+public class SingleCharacter extends AppCompatActivity implements ComponentCallbacks2 {
     private EditUserViewModel model;
 
     private ImageView charImage;

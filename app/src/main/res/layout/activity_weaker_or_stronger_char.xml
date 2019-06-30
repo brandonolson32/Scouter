@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/character_info"
+        android:lineSpacingMultiplier="1.5"
         android:layout_width="329dp"
         android:layout_height="85dp"
         android:layout_marginLeft="8dp"

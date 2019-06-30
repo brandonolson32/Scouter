@@ -1,0 +1,4 @@
+#Wed Jun 26 11:49:28 EDT 2019
+base.0=/Users/brandonolson/cs2340/Scouter/OpenCV/build/intermediates/dex/release/mergeDexRelease/out
+path.0=classes.dex
+renamed.0=classes.dex

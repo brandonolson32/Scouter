@@ -91,11 +91,9 @@ public class SingleCharacter extends AppCompatActivity {
 
         final int imageID = this.getResources().getIdentifier(lf.imageName(), "drawable",
                 this.getPackageName());
-        Glide.with(this).load(imageID)
-                .apply(new RequestOptions()
+        Glide.with(this).load(imageID).apply(new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .placeholder(R.mipmap.ic_launcher)).into(charImage)
-                .setMemoryCategory(MemoryCategory.HIGH);
+                .placeholder(R.mipmap.ic_launcher)).into(charImage);
 
         final int positionOfUser = model.getLifeformList().indexOf(model.getUser());
 

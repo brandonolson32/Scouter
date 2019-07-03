@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.scouter.R;
 import com.example.scouter.entity.LifeForm;
@@ -54,7 +55,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
         super.onTrimMemory(level);
         //don't compare with == as intermediate stages also can be reported,
         // always better to check >= or <=
-        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_BACKGROUND) {
             try {
                 // Activity at the front will get earliest than activity at the
                 // back
@@ -115,6 +116,7 @@ public class WeakerOrStrongerCharacter extends AppCompatActivity {
 
         // sets the image to the comparable character
         Glide.with(this).load(imageID).apply(new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .placeholder(R.mipmap.ic_launcher)).into(dbzImage);
 
         powerDexData = this.getSharedPreferences("com.example.scouter",
